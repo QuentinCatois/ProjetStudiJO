@@ -171,8 +171,19 @@ DJOSER = {
     'ACTIVATION_URL': 'activate/{uid}/{token}', # Specifies the URL pattern for activating a user account.
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {
-        'user_create': 'users.serializers.CreateUserSerializer', # Serializer used for creating a user.
-        'user': "users.serializers.CreateUserSerializer", # Serializer used for user-related actions
+        'user_create': 'app.serializers.CreateUserSerializer', # Serializer used for creating a user. app corresponding to the name of folder application.
+        'user': "app.serializers.CreateUserSerializer", # Serializer used for user-related actions. app corresponding to the name of folder application.
         'user_delete': "djoser.serializers.UserDeleteSerializer", # Serializer used for deleting a user.   
     },
 }
+
+# configuration email, for user activation, password reset, etc. Using Mailtrap.
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_USE_TLS = True
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = "info@jo-de-paris.com"
+DOMAIN = env("DOMAIN")
+SITE_NAME = "Jeux Olympiques France"
