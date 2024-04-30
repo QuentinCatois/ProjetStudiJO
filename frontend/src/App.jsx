@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import LegalsMentions from "./pages/LegalsMentions";
+import SigninPage from "./pages/SigninPage";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/legalsmentions" element={<LegalsMentions />} />
+          <Route path="/signin" element={<SigninPage />} />
         </Routes>
       </Router>
     </>
