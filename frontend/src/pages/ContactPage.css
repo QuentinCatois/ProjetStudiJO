@@ -1,0 +1,229 @@
+body {
+    font-family: "Roboto Condensed";
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 50%;
+    grid-template-rows: 0.1fr 0.1fr .01fr 0.1fr 0.1fr ;
+    grid-template-areas: 
+        "header header header header"
+        "form form form item-1"
+        "item-2 item-3 item-4 item-1"
+        "item-5 item-6 item-7 item-1"
+        "footer footer footer footer"
+
+    ;
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-around;    
+    align-items: center;
+}
+
+form{
+    grid-area: form;
+    margin-top: 30px;
+    margin-left: 60px;
+    margin-bottom: 40px;
+}
+
+.align{
+    display: flex;
+    }
+
+.surname{
+    margin-right: 10px;
+}
+
+.field{
+    border: 2px solid rgba(0, 0, 0, 0);
+    outline: none;
+    width: 100%;
+    border-radius: 3px;
+    border: 1.3px solid #9597a6;
+    padding: 8px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    transition: .3s;
+}
+
+.field:hover{
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+item-1{
+    grid-area: item-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+}
+
+item-2{
+    grid-area: item-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+item-3{
+    grid-area: item-3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+item-4{
+    grid-area: item-4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_resizing {
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+item-5{
+    grid-area: item-5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+item-6{
+    grid-area: item-6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+item-7{
+    grid-area: item-7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    grid-area: footer;
+    text-align: center;
+    margin-top: 100px;
+}
+
+footer a{
+    text-decoration: none;
+    color: black
+}
+
+footer a:hover{
+    color: green
+}
+
+@media (min-width: 551px) and (max-width: 760px) {
+
+    .container{
+        display: grid;
+        grid-template-columns:  1fr 1fr 1fr;
+        grid-template-rows: 0.1fr 1fr 0.1fr 0.1fr 0.1fr 0.1fr ;
+        grid-template-areas:
+            "header header header" 
+            "form form form"
+            "item-1 item-2 item-5"
+            "item-1 item-3 item-6"
+            "item-1 item-4 item-7"
+            "footer footer footer"
+        ;
+    }
+
+    header{
+        display: flex;
+        flex-direction: column;
+    }
+
+    header h1{
+        order: 2;
+    }
+
+    form{
+        grid-area: form;
+        margin-top: 30px;
+        margin-left:50px;
+        margin-bottom: 90px;
+        margin-right: 60px;
+    }
+
+    .image_resizing {
+        width: 30px;
+        margin-bottom: 20px;
+    }
+
+}
+    
+@media only screen and (max-width: 550px) {
+
+    .container{
+        display: grid;
+        grid-template-columns:  1fr 1fr;
+        grid-template-rows: 0.1fr 1fr 0.1fr 0.1fr 0.1fr 0.1fr 0.1fr;
+        grid-template-areas:
+            "header header" 
+            "form form"
+            "item-2 item-5"
+            "item-3 item-6"
+            "item-4 item-7"
+            "item-1 item-1"
+            "footer footer "
+        ;
+    }
+
+    header{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1{
+        order: 2;
+        font-size: 20px;
+    }
+
+    header img{
+        width: 50%;
+        height: 50%;
+    }
+
+    form{
+        grid-area: form;
+        margin-top: 30px;
+        margin-left: 50px;
+        margin-bottom: 20px;
+        margin-right: 60px;
+    }
+
+    .image_resizing {
+        width: 30px;
+        margin-bottom: 20px;
+    }
+
+    item-5, item-6, item-7 {
+        font-size: 12px;
+        margin-right: 70px;
+    }
+
+    .image_item-1_resizing {
+        width: 200px;
+        height: 250px;
+        margin-top: 25px;
+      }
+
+    footer{
+        margin-top: 50px;
+        font-size: 12px;
+    }
+
+}
