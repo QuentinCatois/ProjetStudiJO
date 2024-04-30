@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import LegalsMentions from "./pages/LegalsMentions";
 import SigninPage from "./pages/SigninPage";
+import RegisterPage from "./pages/RegisterPage";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/legalsmentions" element={<LegalsMentions />} />
           <Route path="/signin" element={<SigninPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </Router>
     </>

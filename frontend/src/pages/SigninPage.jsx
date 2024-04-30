@@ -59,7 +59,7 @@ function App () {
                         <button className="btn">Me connecter</button>
                         <p className="lien_vers_page_connexion">
                         Besoin de créer un compte?{" "}
-                            <Link to= "/">M'inscrire</Link>
+                            <Link to= "/register">M inscrire</Link>
                         </p>
                     </form>
                 </div>

@@ -65,7 +65,7 @@ function App () {
         </main>
 
         <footer>
-        <Link to= "/">Page d acceuil</Link>
+            <Link to= "/">Page d acceuil</Link>
         </footer>
         </>
     );
