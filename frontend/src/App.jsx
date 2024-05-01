@@ -5,6 +5,7 @@ import ContactPage from "./pages/ContactPage";
 import LegalsMentions from "./pages/LegalsMentions";
 import SigninPage from "./pages/SigninPage";
 import RegisterPage from "./pages/RegisterPage";
+import OfferPage from "./pages/OfferPage"
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/tickets" element={<OfferPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/legalsmentions" element={<LegalsMentions />} />
           <Route path="/signin" element={<SigninPage />} />

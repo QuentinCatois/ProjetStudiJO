@@ -1,4 +1,157 @@
 import styles from "./HomePage.module.scss"
+import { Link} from "react-router-dom"
+
+//import images breakpoints
+
+//header
+//logo JO
+import logo1 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_154.png';
+import logo2 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_77.png';
+import logo3 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_100.png';
+import logo4 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_120.png';
+import logo5 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_154.png';
+
+//Logo links/buttons
+import cart from '../img/HomePage/header/Logo shopping cart.png';
+import tickets from '../img/HomePage/header/tickets.png';
+import useradd from '../img/HomePage/header/user.png';
+import usersignin from '../img/HomePage/header/User_connexion.png';
+
+//Eiffel Tower Picture
+import EffelTower1 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_1_1,c_fill,g_auto__c_scale,w_200.png';
+import EffelTower2 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_1_1,c_fill,g_auto__c_scale,w_242.png';
+import EffelTower3 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_1_1,c_fill,g_auto__c_scale,w_278.png';
+import EffelTower4 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_1_1,c_fill,g_auto__c_scale,w_307.png';
+import EffelTower5 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_4_3,c_fill,g_auto__c_scale,w_308.png';
+import EffelTower6 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_4_3,c_fill,g_auto__c_scale,w_349.png';
+import EffelTower7 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_4_3,c_fill,g_auto__c_scale,w_386.png';
+import EffelTower8 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_16_9,c_fill,g_auto__c_scale,w_397.png';
+import EffelTower9 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_16_9,c_fill,g_auto__c_scale,w_440.png';
+import EffelTower10 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_16_9,c_fill,g_auto__c_scale,w_471.png';
+import EffelTower11 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_16_9,c_fill,g_auto__c_scale,w_480.png';
+import EffelTower12 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_480.png';
+import EffelTower13 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_521.png';
+import EffelTower14 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_560.png';
+import EffelTower15 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_597.png';
+import EffelTower16 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_634.png';
+import EffelTower17 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_668.png';
+import EffelTower18 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_701.png';
+import EffelTower19 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_734.png';
+import EffelTower20 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_767.png';
+import EffelTower21 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_798.png';
+import EffelTower22 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_827.png';
+import EffelTower23 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_856.png';
+import EffelTower24 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_886.png';
+import EffelTower25 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_915.png';
+import EffelTower26 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_943.png';
+import EffelTower27 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_970.png';
+import EffelTower28 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_998.png';
+import EffelTower29 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_1019.png';
+import EffelTower30 from '../img/HomePage/EiffelTower/main_photo_luff0u_c_scale,w_1021.png';
+
+//medals
+
+import medals1 from '../img/HomePage/medals/medals_rivccn_ar_1_1,c_fill,g_auto__c_scale,w_200.png';
+import medals2 from '../img/HomePage/medals/medals_rivccn_ar_1_1,c_fill,g_auto__c_scale,w_241.png';
+import medals3 from '../img/HomePage/medals/medals_rivccn_ar_1_1,c_fill,g_auto__c_scale,w_276.png';
+import medals4 from '../img/HomePage/medals/medals_rivccn_ar_1_1,c_fill,g_auto__c_scale,w_307.png';
+import medals5 from '../img/HomePage/medals/medals_rivccn_ar_4_3,c_fill,g_auto__c_scale,w_308.png';
+import medals6 from '../img/HomePage/medals/medals_rivccn_ar_4_3,c_fill,g_auto__c_scale,w_344.png';
+import medals7 from '../img/HomePage/medals/medals_rivccn_ar_4_3,c_fill,g_auto__c_scale,w_382.png';
+import medals8 from '../img/HomePage/medals/medals_rivccn_ar_4_3,c_fill,g_auto__c_scale,w_397.png';
+import medals9 from '../img/HomePage/medals/medals_rivccn_ar_16_9,c_fill,g_auto__c_scale,w_397.png';
+import medals10 from '../img/HomePage/medals/medals_rivccn_ar_16_9,c_fill,g_auto__c_scale,w_442.png';
+import medals11 from '../img/HomePage/medals/medals_rivccn_ar_16_9,c_fill,g_auto__c_scale,w_478.png';
+import medals12 from '../img/HomePage/medals/medals_rivccn_ar_16_9,c_fill,g_auto__c_scale,w_480.png';
+import medals13 from '../img/HomePage/medals/medals_rivccn_c_scale,w_480.png';
+import medals14 from '../img/HomePage/medals/medals_rivccn_c_scale,w_617.png';
+import medals15 from '../img/HomePage/medals/medals_rivccn_c_scale,w_731.png';
+import medals16 from '../img/HomePage/medals/medals_rivccn_c_scale,w_840.png';
+import medals17 from '../img/HomePage/medals/medals_rivccn_c_scale,w_927.png';
+import medals18 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1020.png';
+import medals19 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1087.png';
+import medals20 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1113.png';
+import medals21 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1117.png';
+import medals22 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1124.png';
+import medals23 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1164.png';
+import medals24 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1209.png';
+import medals25 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1255.png';
+import medals26 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1293.png';
+import medals27 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1334.png';
+import medals28 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1339.png';
+import medals29 from '../img/HomePage/medals/medals_rivccn_c_scale,w_1344.png';
+
+//torch
+import torch1 from '../img/HomePage/torch/torch_olympic_thmwrs_c_scale,w_77.png';
+import torch2 from '../img/HomePage/torch/torch_olympic_thmwrs_c_scale,w_77.png';
+import torch3 from '../img/HomePage/torch/torch_olympic_thmwrs_c_scale,w_100.png';
+import torch4 from '../img/HomePage/torch/torch_olympic_thmwrs_c_scale,w_199.png';
+import torch5 from '../img/HomePage/torch/torch_olympic_thmwrs_c_scale,w_240.png';
+import torch6 from '../img/HomePage/torch/torch_olympic_thmwrs_c_scale,w_240.png';
+import torch7 from '../img/HomePage/torch/torch_olympic_thmwrs_c_scale,w_300.png';
+import torch8 from '../img/HomePage/torch/torch_olympic_thmwrs_c_scale,w_358.png';
+
+//Athletisme
+import athletism1 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_154.jpg';
+import athletism2 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_199.jpg';
+import athletism3 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_240.jpg';
+import athletism4 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_360.jpg';
+import athletism5 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_558.jpg';
+import athletism6 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_718.jpg';
+import athletism7 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_842.jpg';
+import athletism8 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_989.jpg';
+import athletism9 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_1116.jpg';
+import athletism10 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_1225.jpg';
+import athletism11 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_1277.jpg';
+import athletism12 from '../img/HomePage/athletism/action-athletes_nxl3jz_c_scale,w_1280.jpg';
+
+//basketball
+
+import basketball1 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_154.jpg';
+import basketball2 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_154.jpg';
+import basketball3 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_199.jpg';
+import basketball4 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_199.jpg';
+import basketball5 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_240.jpg';
+import basketball6 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_360.jpg';
+import basketball7 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_518.jpg';
+import basketball8 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_655.jpg';
+import basketball9 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_770.jpg';
+import basketball10 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_886.jpg';
+import basketball11 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_992.jpg';
+import basketball12 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_1091.jpg';
+import basketball13 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_1193.jpg';
+import basketball14 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_1253.jpg';
+import basketball15 from '../img/HomePage/basketball/basketball-1544370_1280_tiduyj_c_scale,w_1280.jpg';
+
+//fencing
+
+import fencing1 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_154.jpg';
+import fencing2 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_154.jpg';
+import fencing3 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_199.jpg';
+import fencing4 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_199.jpg';
+import fencing5 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_240.jpg';
+import fencing6 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_360.jpg';
+import fencing7 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_650.jpg';
+import fencing8 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_982.jpg';
+import fencing9 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_1189.jpg';
+import fencing10 from '../img/HomePage/fencing/fencing-1839325_1280_jd9iro_c_scale,w_1280.jpg';
+
+//swimming
+import swimming1 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_154.jpg';
+import swimming2 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_154.jpg';
+import swimming3 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_199.jpg';
+import swimming4 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_199.jpg';
+import swimming5 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_240.jpg';
+import swimming6 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_360.jpg';
+import swimming7 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_537.jpg';
+import swimming8 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_690.jpg';
+import swimming9 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_812.jpg';
+import swimming10 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_922.jpg';
+import swimming11 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_1016.jpg';
+import swimming12 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_1118.jpg';
+import swimming13 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_1209.jpg';
+import swimming14 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_1264.jpg';
+import swimming15 from '../img/HomePage/swimming/swimming-78112_1280_iumcpz_c_scale,w_1280.jpg';
 
 function App () {
   
@@ -12,28 +165,24 @@ function App () {
             <source
               media="(max-width: 767px)"
               sizes="(max-width: 770px) 20vw, 154px"
-              srcSet="
-                img/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_154.png 154w"
+              srcSet={logo1}
             />
             <source
               media="(min-width: 768px) and (max-width: 991px)"
               sizes="(max-width: 1000px) 10vw, 100px"
-              srcSet="
-                img/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_77.png 77w,
-                img/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_100.png 100w"
+              srcSet={logo2 + " 77w, " +
+              logo3 + " 100w, "}
             />
             <source
               media="(min-width: 992px) and (max-width: 1199px)"
               sizes="(max-width: 1200px) 10vw, 120px"
-              srcSet="
-                img/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_100.png 100w,
-                img/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_120.png 120w"
+              srcSet={logo3 + " 100w, " +
+              logo4 + " 120w, "}
             />
             <img
               sizes="(max-width: 1540px) 10vw, 154px"
-              srcSet="
-                img/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_154.png 154w"
-              src="logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_154.png"
+              srcSet={logo5}
+              src={logo5}
               alt="Logo_JO"
             />
           </picture>
@@ -43,12 +192,12 @@ function App () {
         </div>
         <nav className={styles.Nav}>
           <div>
-            <button><a href="#"><img className={styles.img_header_sizing} src="img/header/tickets.png" alt="logo_tickets"/>Billetterie</a></button>
-            <button><a href="#"><img className={styles.img_header_sizing} src="img/header/Logo shopping cart.png" alt="logo_cart"/>Panier</a></button>
+            <button><Link to= "/tickets"><img className={styles.img_header_sizing} src={tickets} alt="logo_tickets"/>Billetterie</Link></button>
+            <button><a href="#"><img className={styles.img_header_sizing} src={cart} alt="logo_cart"/>Panier</a></button>
           </div>
           <div>
-            <button><a href="../Loginpage/login.html"><img className={styles.img_header_sizing} src="img/header/User_connexion.png" alt="logo_user_connexion"/>Se connecter</a></button>
-            <button><a href="../Subscriptionpage/subscriptionpage.html"><img className={styles.img_header_sizing} src="img/header/user.png" alt="logo_user_subscribtion"/>S inscrire</a></button>
+            <button><Link to= "/signin"><img className={styles.img_header_sizing} src={usersignin} alt="logo_user_connexion"/>Se connecter</Link></button>
+            <button><Link to= "/register"><img className={styles.img_header_sizing} src={useradd} alt="logo_user_subscribtion"/>S{"'"}inscrire</Link></button>
           </div>
         </nav>
       </header>
@@ -58,52 +207,47 @@ function App () {
           <source
             media="(max-width: 767px)"
             sizes="(max-width: 768px) 40vw, 307px"
-            srcSet="
-            img/main_photo/main_photo_luff0u_ar_1_1,c_fill,g_auto__c_scale,w_200.png 200w,
-            img/main_photo/main_photo_luff0u_ar_1_1,c_fill,g_auto__c_scale,w_242.png 242w,
-            img/main_photo/main_photo_luff0u_ar_1_1,c_fill,g_auto__c_scale,w_278.png 278w,
-            img/main_photo/main_photo_luff0u_ar_1_1,c_fill,g_auto__c_scale,w_307.png 307w"/>
+            srcSet={EffelTower1 + " 200w, " +
+            EffelTower2 + " 242w, " +
+            EffelTower3 + " 278w, " +
+            EffelTower4 + " 307w, "}/>
           <source
             media="(min-width: 768px) and (max-width: 991px)"
             sizes="(max-width: 993px) 40vw, 397px"
-            srcSet="
-            img/main_photo/main_photo_luff0u_ar_4_3,c_fill,g_auto__c_scale,w_308.png 308w,
-            img/main_photo/main_photo_luff0u_ar_4_3,c_fill,g_auto__c_scale,w_349.png 349w,
-            img/main_photo/main_photo_luff0u_ar_4_3,c_fill,g_auto__c_scale,w_386.png 386w,
-            img/main_photo/main_photo_luff0u_ar_4_3,c_fill,g_auto__c_scale,w_397.png 397w"/>
+            srcSet={EffelTower5 + " 308w, " +
+            EffelTower6 + " 349w, " +
+            EffelTower7 + " 386w, " +
+            EffelTower8 + " 397w, "}/>
           <source
             media="(min-width: 992px) and (max-width: 1199px)"
             sizes="(max-width: 1200px) 40vw, 480px"
-            srcSet="
-            img/main_photo/main_photo_luff0u_ar_16_9,c_fill,g_auto__c_scale,w_397.png 397w,
-            img/main_photo/main_photo_luff0u_ar_16_9,c_fill,g_auto__c_scale,w_440.png 440w,
-            img/main_photo/main_photo_luff0u_ar_16_9,c_fill,g_auto__c_scale,w_471.png 471w,
-            img/main_photo/main_photo_luff0u_ar_16_9,c_fill,g_auto__c_scale,w_480.png 480w"
-          />
+            srcSet={EffelTower8 + " 397w, " +
+            EffelTower9 + " 440w, " +
+            EffelTower10 + " 471w, " +
+            EffelTower11 + " 480w, "}/>
           <img
             className={styles.main_photo}
             sizes="(max-width: 2553px) 40vw, 1021px"
-            srcSet="
-            img/main_photo/main_photo_luff0u_c_scale,w_480.png 480w,
-            img/main_photo/main_photo_luff0u_c_scale,w_521.png 521w,
-            img/main_photo/main_photo_luff0u_c_scale,w_560.png 560w,
-            img/main_photo/main_photo_luff0u_c_scale,w_597.png 597w,
-            img/main_photo/main_photo_luff0u_c_scale,w_634.png 634w,
-            img/main_photo/main_photo_luff0u_c_scale,w_668.png 668w,
-            img/main_photo/main_photo_luff0u_c_scale,w_701.png 701w,
-            img/main_photo/main_photo_luff0u_c_scale,w_734.png 734w,
-            img/main_photo/main_photo_luff0u_c_scale,w_767.png 767w,
-            img/main_photo/main_photo_luff0u_c_scale,w_798.png 798w,
-            img/main_photo/main_photo_luff0u_c_scale,w_827.png 827w,
-            img/main_photo/main_photo_luff0u_c_scale,w_856.png 856w,
-            img/main_photo/main_photo_luff0u_c_scale,w_886.png 886w,
-            img/main_photo/main_photo_luff0u_c_scale,w_915.png 915w,
-            img/main_photo/main_photo_luff0u_c_scale,w_943.png 943w,
-            img/main_photo/main_photo_luff0u_c_scale,w_970.png 970w,
-            img/main_photo/main_photo_luff0u_c_scale,w_998.png 998w,
-            img/main_photo/main_photo_luff0u_c_scale,w_1019.png 1019w,
-            img/main_photo/main_photo_luff0u_c_scale,w_1021.png 1021w"
-            src="main_photo_luff0u_c_scale,w_1021.png"
+            srcSet={EffelTower12 + " 480w, " +
+            EffelTower13 + " 521w, " +
+            EffelTower14 + " 560w, " +
+            EffelTower15 + " 597w, "+
+            EffelTower16 + " 634w, " +
+            EffelTower17 + " 668w, " +
+            EffelTower18 + " 701w, "+
+            EffelTower19 + " 734w, " +
+            EffelTower20 + " 767w, " +
+            EffelTower21 + " 798w, " +
+            EffelTower22 + " 827w, " +
+            EffelTower23 + " 856w, "+
+            EffelTower24 + " 886w, " +
+            EffelTower25 + " 915w, " +
+            EffelTower26 + " 943w, "+
+            EffelTower27 + " 970w, " +
+            EffelTower28 + " 998w, " +
+            EffelTower29 + " 1019w, " +
+            EffelTower30 + " 1021w, "}
+            src={EffelTower30}
             alt="Photo de la Tour Eiffel avec le symbol des JO et la phrase Bienvenue sue le site officiel des JO"
           />
         </picture>
@@ -128,49 +272,45 @@ function App () {
           <source
             media="(max-width: 767px)"
             sizes="(max-width: 768px) 40vw, 307px"
-            srcSet="
-            img/medals/medals_rivccn_ar_1_1,c_fill,g_auto__c_scale,w_200.png 200w,
-            img/medals/medals_rivccn_ar_1_1,c_fill,g_auto__c_scale,w_241.png 241w,
-            img/medals/medals_rivccn_ar_1_1,c_fill,g_auto__c_scale,w_276.png 276w,
-            img/medals/medals_rivccn_ar_1_1,c_fill,g_auto__c_scale,w_307.png 307w"/>
+            srcSet={medals1 + " 200w, " +
+            medals2 + " 241w, " +
+            medals3 + " 276w, " +
+            medals4 + " 307w, "}/>
           <source
             media="(min-width: 768px) and (max-width: 991px)"
             sizes="(max-width: 993px) 40vw, 397px"
-            srcSet="
-            img/medals/medals_rivccn_ar_4_3,c_fill,g_auto__c_scale,w_308.png 308w,
-            img/medals/medals_rivccn_ar_4_3,c_fill,g_auto__c_scale,w_344.png 344w,
-            img/medals/medals_rivccn_ar_4_3,c_fill,g_auto__c_scale,w_382.png 382w,
-            img/medals/medals_rivccn_ar_4_3,c_fill,g_auto__c_scale,w_397.png 397w"/>
+            srcSet={medals5 + " 308w, " +
+            medals6 + " 344w, " +
+            medals7 + " 382w, " +
+            medals8 + " 397w, "}/>
           <source
             media="(min-width: 992px) and (max-width: 1199px)"
             sizes="(max-width: 1200px) 40vw, 480px"
-            srcSet="
-            img/medals/medals_rivccn_ar_16_9,c_fill,g_auto__c_scale,w_397.png 397w,
-            img/medals/medals_rivccn_ar_16_9,c_fill,g_auto__c_scale,w_442.png 442w,
-            img/medals/medals_rivccn_ar_16_9,c_fill,g_auto__c_scale,w_478.png 478w,
-            img/medals/medals_rivccn_ar_16_9,c_fill,g_auto__c_scale,w_480.png 480w"/>
+            srcSet={medals9 + " 397w, " +
+            medals10 + " 442w, " +
+            medals11 + " 478w, " +
+            medals12 + " 480w, "}/>
           <img
             className={styles.medals_photo}
             sizes="(max-width: 3360px) 40vw, 1344px"
-            srcSet="
-            img/medals/medals_rivccn_c_scale,w_480.png 480w,
-            img/medals/medals_rivccn_c_scale,w_617.png 617w,
-            img/medals/medals_rivccn_c_scale,w_731.png 731w,
-            img/medals/medals_rivccn_c_scale,w_840.png 840w,
-            img/medals/medals_rivccn_c_scale,w_927.png 927w,
-            img/medals/medals_rivccn_c_scale,w_1020.png 1020w,
-            img/medals/medals_rivccn_c_scale,w_1087.png 1087w,
-            img/medals/medals_rivccn_c_scale,w_1113.png 1113w,
-            img/medals/medals_rivccn_c_scale,w_1117.png 1117w,
-            img/medals/medals_rivccn_c_scale,w_1124.png 1124w,
-            img/medals/medals_rivccn_c_scale,w_1164.png 1164w,
-            img/medals/medals_rivccn_c_scale,w_1209.png 1209w,
-            img/medals/medals_rivccn_c_scale,w_1255.png 1255w,
-            img/medals/medals_rivccn_c_scale,w_1293.png 1293w,
-            img/medals/medals_rivccn_c_scale,w_1334.png 1334w,
-            img/medals/medals_rivccn_c_scale,w_1339.png 1339w,
-            img/medals/medals_rivccn_c_scale,w_1344.png 1344w"
-            src="medals_rivccn_c_scale,w_1344.png"
+            srcSet={medals13 + " 480w, " +
+            medals14 + " 617w, " +
+            medals15 + " 731w, "+
+            medals16 + " 840w, " +
+            medals17 + " 927w, " +
+            medals18 + " 1020w, "+
+            medals19 + " 1087w, " +
+            medals20 + " 1113w, " +
+            medals21 + " 1117w, " +
+            medals22 + " 1124w, " +
+            medals23 + " 1164w, "+
+            medals24 + " 1209w, " +
+            medals25 + " 1255w, " +
+            medals26 + " 1293w, " +
+            medals27 + " 1334w, " +
+            medals28 + " 1339w, " +
+            medals29 + " 1344w, "}
+            src={medals29}
             alt="Photo_médailles_d'or, d'argent et de bronze"/>
         </picture>
       </div>
@@ -184,30 +324,24 @@ function App () {
           <source
             media="(max-width: 767px)"
             sizes="(max-width: 770px) 10vw, 77px"
-            srcSet="
-                img/torch/torch_olympic_zai8pg_c_scale,w_77.png 77w"/>
+            srcSet={torch1}/>
           <source
             media="(min-width: 768px) and (max-width: 991px)"
             sizes="(max-width: 1000px) 10vw, 100px"
-            srcSet="
-                img/torch/torch_olympic_zai8pg_c_scale,w_77.png 77w,
-                img/torch/torch_olympic_zai8pg_c_scale,w_100.png 100w"/>
+            srcSet={torch2 + " 77w, " +
+            torch3 + " 100w, "}/>
           <source
             media="(min-width: 992px) and (max-width: 1199px)"
-            sizes="(max-width: 1200px) 10vw, 120px"
-            srcSet="
-                img/torch/torch_olympic_zai8pg_c_scale,w_100.png 100w,
-                img/torch/torch_olympic_zai8pg_c_scale,w_120.png 120w"/>
+            sizes="(max-width: 1200px) 20vw, 240px"
+            srcSet={torch4 + " 199w, " +
+            torch5 + " 240w, "}/>
           <img
             className={styles.torch_photo}
-            sizes="(max-width: 3580px) 10vw, 358px"
-            srcSet="
-                img/torch/torch_olympic_zai8pg_c_scale,w_120.png 120w,
-                img/torch/torch_olympic_zai8pg_c_scale,w_205.png 205w,
-                img/torch/torch_olympic_zai8pg_c_scale,w_270.png 270w,
-                img/torch/torch_olympic_zai8pg_c_scale,w_327.png 327w,
-                img/torch/torch_olympic_zai8pg_c_scale,w_358.png 358w"
-            src="torch_olympic_zai8pg_c_scale,w_358.png"
+            sizes="(max-width: 1790px) 20vw, 358px"
+            srcSet={torch6 + " 240w, " +
+            torch7 + " 300w, " +
+            torch8 + "358w, "}
+            src={torch8}
             alt="Logo torche des JO"/>
         </picture>
       </div>
@@ -225,34 +359,30 @@ function App () {
           <source
             media="(max-width: 767px)"
             sizes="(max-width: 770px) 20vw, 154px"
-            srcSet="
-            img/athletism/action-athletes_nxl3jz_c_scale,w_154.jpg 154w"/>
+            srcSet={athletism1}/>
           <source
             media="(min-width: 768px) and (max-width: 991px)"
             sizes="(max-width: 995px) 20vw, 199px"
-            srcSet="
-            img/athletism/action-athletes_nxl3jz_c_scale,w_154.jpg 154w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_199.jpg 199w"/>
+            srcSet={athletism1 + " 154w, " +
+            athletism2 + " 199w, "}/>
           <source
             media="(min-width: 992px) and (max-width: 1199px)"
             sizes="(max-width: 1200px) 20vw, 240px"
-            srcSet="
-            img/athletism/action-athletes_nxl3jz_c_scale,w_199.jpg 199w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_240.jpg 240w"/>
+            srcSet={athletism2 + " 199w, " +
+            athletism3 + " 240w, "}/>
           <img
             className={styles.athletism}
             sizes="(max-width: 4267px) 30vw, 1280px"
-            srcSet="
-            img/athletism/action-athletes_nxl3jz_c_scale,w_360.jpg 360w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_558.jpg 558w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_718.jpg 718w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_842.jpg 842w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_989.jpg 989w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_1116.jpg 1116w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_1225.jpg 1225w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_1277.jpg 1277w,
-            img/athletism/action-athletes_nxl3jz_c_scale,w_1280.jpg 1280w"
-            src="action-athletes_nxl3jz_c_scale,w_1280.jpg"
+            srcSet={athletism4 + " 360w, " +
+            athletism5 + " 558w, " +
+            athletism6 + " 718w, "+
+            athletism7 + " 842w, " +
+            athletism8 + " 989w, " +
+            athletism9 + " 1116w, "+
+            athletism10 + " 1225w, " +
+            athletism11 + " 1277w, " +
+            athletism12 + " 1280w, "}
+            src={athletism12}
             alt="photo athlètisme course"/>
         </picture>
       </div>
@@ -269,36 +399,32 @@ function App () {
         <picture>
           <source
             media="(max-width: 767px)"
-            sizes="(max-width: 770px) 20vw, 154px"
-            srcSet="
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_154.jpg 154w"/>
+            sizes="(max-width: 770px) 10vw, 77px"
+            srcSet={basketball1}/>
           <source
             media="(min-width: 768px) and (max-width: 991px)"
-            sizes="(max-width: 995px) 20vw, 199px"
-            srcSet="
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_154.jpg 154w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_199.jpg 199w"/>
+            sizes="(max-width: 1000px) 10vw, 100px"
+            srcSet={basketball2 + " 154w, " +
+            basketball3 + " 199w, "}/>
           <source
             media="(min-width: 992px) and (max-width: 1199px)"
             sizes="(max-width: 1200px) 20vw, 240px"
-            srcSet="
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_199.jpg 199w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_240.jpg 240w"/>
+            srcSet={basketball4 + " 199w, " +
+            basketball5 + " 240w, "}/>
           <img
             className={styles.basketball}
             sizes="(max-width: 4267px) 30vw, 1280px"
-            srcSet="
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_360.jpg 360w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_518.jpg 518w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_655.jpg 655w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_770.jpg 770w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_886.jpg 886w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_992.jpg 992w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_1091.jpg 1091w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_1193.jpg 1193w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_1253.jpg 1253w,
-            img/basketball/basketball-1544370_1280_tiduyj_c_scale,w_1280.jpg 1280w"
-            src="basketball-1544370_1280_tiduyj_c_scale,w_1280.jpg"
+            srcSet={basketball6 + " 360w, " +
+            basketball7 + " 518w, " +
+            basketball8 + " 655w, "+
+            basketball9 + " 770w, " +
+            basketball10 + " 886w, " +
+            basketball11 + " 992w, "+
+            basketball12 + " 1091w, " +
+            basketball13 + " 1193w, " +
+            basketball14 + " 1253w, " +
+            basketball15 + " 1280w, "}
+            src={basketball15}
             alt="photo basketball"/>
           </picture>
       </div>
@@ -316,30 +442,26 @@ function App () {
           <source
             media="(max-width: 767px)"
             sizes="(max-width: 770px) 20vw, 154px"
-            srcSet="
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_154.jpg 154w"/>
+            srcSet={fencing1}/>
           <source
             media="(min-width: 768px) and (max-width: 991px)"
             sizes="(max-width: 995px) 20vw, 199px"
-            srcSet="
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_154.jpg 154w,
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_199.jpg 199w"/>
+            srcSet={fencing2 + " 154w, " +
+            fencing3 + " 199w, "}/>
           <source
             media="(min-width: 992px) and (max-width: 1199px)"
             sizes="(max-width: 1200px) 20vw, 240px"
-            srcSet="
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_199.jpg 199w,
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_240.jpg 240w"/>
+            srcSet={fencing4 + " 199w, " +
+            fencing5+ " 240w, "}/>
           <img
             className={styles.fencing}
             sizes="(max-width: 4267px) 30vw, 1280px"
-            srcSet="
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_360.jpg 360w,
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_650.jpg 650w,
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_982.jpg 982w,
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_1189.jpg 1189w,
-                img/fencing/fencing-1839325_1280_jd9iro_c_scale,w_1280.jpg 1280w"
-            src="fencing-1839325_1280_jd9iro_c_scale,w_1280.jpg"
+            srcSet={fencing6 + " 360w, " +
+            fencing7 + " 650w, " +
+            fencing8 + " 982w, "+
+            fencing9 + " 1189w, " +
+            fencing10 + " 1280w, "}
+            src={fencing10}
             alt="photo escrimeurs en match"/>
           </picture>
       </div>
@@ -357,35 +479,31 @@ function App () {
           <source
             media="(max-width: 767px)"
             sizes="(max-width: 770px) 20vw, 154px"
-            srcSet="
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_154.jpg 154w"/>
+            srcSet={swimming1}/>
           <source
             media="(min-width: 768px) and (max-width: 991px)"
             sizes="(max-width: 995px) 20vw, 199px"
-            srcSet="
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_154.jpg 154w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_199.jpg 199w"/>
+            srcSet={swimming2 + " 154w, " +
+            swimming3+ " 199w, "}/>
           <source
             media="(min-width: 992px) and (max-width: 1199px)"
             sizes="(max-width: 1200px) 20vw, 240px"
-            srcSet="
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_199.jpg 199w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_240.jpg 240w"/>
+            srcSet={swimming4 + " 199w, " +
+            swimming5+ " 240w, "}/>
           <img
             className={styles.swimming}
             sizes="(max-width: 4267px) 30vw, 1280px"
-            srcSet="
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_360.jpg 360w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_537.jpg 537w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_690.jpg 690w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_812.jpg 812w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_922.jpg 922w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_1016.jpg 1016w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_1118.jpg 1118w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_1209.jpg 1209w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_1264.jpg 1264w,
-                img/swimming/swimming-78112_1280_iumcpz_c_scale,w_1280.jpg 1280w"
-            src="swimming-78112_1280_iumcpz_c_scale,w_1280.jpg"
+            srcSet={swimming6 + " 360w, " +
+            swimming7 + " 537w, " +
+            swimming8 + " 690w, "+
+            swimming9 + " 812w, " +
+            swimming10 + " 922w, " +
+            swimming11 + " 1016w, "+
+            swimming12 + " 1118w, " +
+            swimming13 + " 1209w, " +
+            swimming14 + " 1264w, " +
+            swimming15 + " 1280w, " }
+            src={swimming15}
             alt="photo nageuse faisant du crawl"/>
           </picture>
       </div>
@@ -399,9 +517,9 @@ function App () {
       </div>
 
       <footer>
-        <a href="#">Contact</a>
-        <a href="../Legalsmention/legalsmention.html">Crédits et mentions<br />légales</a>
-        <a href="#">Conditions générales<br />d achat</a>
+        <Link to= "/register">Contact</Link>
+        <Link to= "/register">Crédits et mentions<br />légales</Link>
+        <Link to= "/register">Conditions générales<br />d achat</Link>
       </footer>
     </div>
 

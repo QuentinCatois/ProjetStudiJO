@@ -40,7 +40,7 @@ function App () {
                     />
                     </picture>
 
-                    <h2>S inscrire</h2>
+                    <h2>S{"'"}inscrire</h2>
 
                     <div className={styles.test}>
 
