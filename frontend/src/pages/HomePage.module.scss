@@ -1,0 +1,419 @@
+#root {
+    --color1: #001219;
+    --color2: #005f73;
+    --color3: white;
+    --color4: greenyellow;
+}
+  
+body {
+    font-family: "Roboto Condensed";
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.second_title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+  
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1fr 0.1fr 0.4fr 0.1fr 0.1fr 0.4fr 0.1fr 0.4fr 0.1fr 0.4fr 0.1fr 0.4fr 0.1fr;
+    grid-template-areas:
+      "header header header header header header header header header header"
+      "item-1 item-1 item-1 item-1 item-1 item-1 item-2 item-2 item-2 item-2"
+      "item-3 item-3 item-3 item-3 item-3 item-3 item-3 item-3 item-3 item-3"
+      "item-4 item-4 item-4 item-5 item-5 item-6 item-7 item-7 item-7 item-7"
+      "item-8 item-8 item-8 item-8 item-8 item-8 item-8 item-8 item-8 item-8"
+      " . item-9 item-9 item-9 item-10 item-10 item-10 item-10 item-10 . "
+      " . item-9 item-9 item-9 item-11 item-11 item-11 item-11 item-11 . "
+      " . item-12 item-12 item-12 item-13 item-13 item-13 item-13 item-13 . "
+      " . item-12 item-12 item-12 item-14 item-14 item-14 item-14 item-14 . "
+      " . item-15 item-15 item-15 item-16 item-16 item-16 item-16 item-16 . "
+      " . item-15 item-15 item-15 item-17 item-17 item-17 item-17 item-17 . "
+      " . item-18 item-18 item-18 item-19 item-19 item-19 item-19 item-19 . "
+      " . item-18 item-18 item-18 item-20 item-20 item-20 item-20 item-20 . "
+      "footer footer footer footer footer footer footer footer footer footer";
+    grid-gap: 0.2rem;
+}
+  
+header {
+      grid-area: header;
+}
+    
+#item-1 {
+      grid-area: item-1;
+}
+    
+.main_photo {
+      width: 100%
+}
+
+#item-2 {
+      grid-area: item-2;
+      display: grid;
+      align-items: center;
+}
+
+#item-3 {
+      grid-area: item-3;
+      padding-top: 15px;
+}
+
+.first_title {
+      text-align: center;
+      font-size: 25px;
+      font-weight: 300;
+      margin: 0;
+      color: var(--color1);
+}
+
+#item-4 {
+      grid-area: item-4;
+      display: flex;
+      align-items: center;
+}
+
+.medals_photo{
+  width: 100%;
+}
+
+#item-5 {
+      grid-area: item-5;
+      display: flex;
+      align-items: center;    
+}
+    
+#item-6 {
+
+      grid-area: item-6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+
+.torch_photo{
+      height: 70%;
+      width: 100%;
+}
+
+#item-7 {
+      grid-area: item-7;
+      display: flex;
+      align-items: center;
+}
+
+#item-8 {
+      background: var(--color1);
+      grid-area: item-8;
+      color: var(--color3);
+      text-align: center;
+      padding-top: 5px;
+}  
+
+#item-9 {
+      grid-area: item-9;
+}
+
+.athletism {
+  height: 100%;
+  width: 100%;
+}
+    
+#item-10 {
+      grid-area: item-10;
+}
+
+#item-11 {
+      grid-area: item-11;
+}
+    
+#item-12 {
+      grid-area: item-12;
+}
+
+.basketball {
+  height: 100%;
+  width: 100%;
+}
+
+#item-13 {
+      grid-area: item-13;
+}
+    
+#item-14 {
+      grid-area: item-14;
+}
+
+#item-15 {
+      grid-area: item-15;
+}
+
+.fencing {
+  height: 100%;
+  width: 100%;
+}
+    
+#item-16 {
+      grid-area: item-16;
+}
+
+#item-17 {
+      grid-area: item-17;
+}
+    
+#item-18 {
+      grid-area: item-18;
+}
+
+.swimming {
+  height: 100%;
+  width: 100%;
+}
+
+#item-19 {
+      grid-area: item-19;
+}
+    
+#item-20 {
+      grid-area: item-20;
+}
+
+footer {
+        background: #1de9b6;
+        grid-area: footer;
+}
+
+/*Header*/
+
+.Header {
+      display: grid;
+      grid-template-areas: "Logo Nav";
+      background-color: var(--color1);
+}
+
+.Logo {
+      display: flex; 
+      align-items: center;
+      color: #fff;
+}
+
+header h2 {
+      font-size: 20px;
+}
+
+.Nav{
+      grid-area: Nav;
+      display: grid;
+      grid-template-columns: repeat(2,auto);
+      justify-content: end;
+      align-content: space-evenly;
+}
+
+nav a{
+      text-decoration: none;
+      color: var(--color3);
+      font-size: 14px;
+      font-family: "Roboto Condensed";
+}
+
+nav a:hover{
+      color: var(--color4);
+}
+
+nav button {
+      padding: 4px;
+      background-color: var(--color1);
+      color: var(--color3);
+      border-radius:5px;
+      border-width: 0px;
+      border-color: var(--color1);
+      margin-right: 10px;
+}
+
+.img_header_sizing {
+          height: 20px;
+          padding-right: 10px; 
+}
+
+/*footer*/
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color1);
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--color3);
+}
+
+footer a:hover {
+  color: var(--color4);
+}
+
+@media (min-width: 551px) and (max-width: 760px) {
+  .container {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 0.08fr 0.2fr 0.01fr 0.1fr 0.03fr 0.1fr 0.05fr 0.1fr 0.08fr;
+        grid-template-areas:
+        "header header header header header header header header"
+        "item-1 item-1 item-1 item-1 item-1 item-2 item-2 item-2"
+        "item-3 item-3 item-3 item-3 item-3 item-3 item-3 item-3"
+        "item-4 item-4 item-5 item-5 item-6 item-7 item-7 item-7"
+        "item-8 item-8 item-8 item-8 item-8 item-8 item-8 item-8"
+        "item-9 item-9 item-12 item-12 item-15 item-15 item-18 item-18"
+        "item-10 item-10 item-13 item-13 item-16 item-16 item-19 item-19"
+        "item-11 item-11 item-14 item-14 item-17 item-17 item-20 item-20"
+        "footer footer footer footer footer footer footer footer"
+        ;
+  }
+
+  body{
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .second_title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  /*header*/
+  header h2 {
+    font-size: 15px;
+  }
+
+  .Nav a{
+    font-size: 12px;
+  }
+
+  nav button {
+    margin-right: 5px;
+  }
+
+  .img_header_sizing {
+        height: 20px;
+        padding-right: 5px; 
+      }
+
+  /*items*/
+
+  .first_title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 300;
+      margin: 0;
+      color: var(--color1);
+  }
+
+  .torch_photo{
+    height: 60%;
+    width: 80%;
+  }
+
+  .h3_center {
+    display: flex;
+    justify-content: center;
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+  .container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 0.6fr 0.5fr 0.1fr 0.2fr 0.2fr 0.05fr 0.2fr 0.1fr 0.2fr 0.1fr 0.2fr 0.1fr 0.2fr 0.1fr 0.1fr;
+    grid-template-areas:
+      "header header header header"
+      "item-1 item-1 item-1 item-1"
+      "item-2 item-2 item-2 item-2"
+      "item-3 item-3 item-3 item-3"
+      "item-4 item-4 item-5 item-5"
+      "item-6 item-7 item-7 item-7"
+      "item-8 item-8 item-8 item-8"
+      "item-9 item-9 item-10 item-10"
+      "item-11 item-11 item-11 item-11"
+      "item-12 item-12 item-13 item-13"
+      "item-14 item-14 item-14 item-14"
+      "item-15 item-15 item-16 item-16"
+      "item-17 item-17 item-17 item-17"
+      "item-18 item-18 item-19 item-19"
+      "item-20 item-20 item-20 item-20"
+      "footer footer footer footer"
+  }
+
+  body{
+    font-size: 11px;
+    line-height: 20px;
+  }
+
+  /*header*/
+
+  .Header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Logo{
+    justify-content: center;
+  }
+
+  header h2 {
+    font-size: 20px;    
+  }
+
+  .Nav a{
+    font-size: 12px;
+  }
+
+  .img_header_sizing {
+    height: 15px;
+    padding-right: 5px; 
+  }
+
+  nav button {
+    background-color: var(--color1);
+    color: var(--color3);
+    border-radius:5px;
+    border-width: 2px;
+    border-color: var(--color3);
+    margin: 5px;
+    width: 110px;
+  }
+
+  /*items*/
+
+  .first_title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 15px;
+    color: var(--color1);
+  }
+
+  .medals_photo{
+    width: 100%;
+  }
+  
+  .second_title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .torch_photo{
+    height: 50%;
+    width: 60%;
+  }
+}
+
+
+    

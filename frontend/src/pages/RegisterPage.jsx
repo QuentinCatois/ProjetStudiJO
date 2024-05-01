@@ -1,5 +1,5 @@
 import { Link} from "react-router-dom"
-import "./RegisterPage.css"
+import styles from "./RegisterPage.module.scss"
 
 //import images breakpoints
 
@@ -14,10 +14,10 @@ import imagesportcollage from '../img/RegisterPage/sports-abstract-collage.jpg';
 function App () {
     return (
 
-        <div className="container">
-            <div className="contact-box">
-                <img className="left" src={imagesportcollage} />
-                <div className="right">
+        <div className={styles.container}>
+            <div className={styles.contact_box}>
+                <img className={styles.left} src={imagesportcollage} />
+                <div className={styles.right}>
 
                     <picture>
                     <source
@@ -42,65 +42,25 @@ function App () {
 
                     <h2>S inscrire</h2>
 
-                    <div className="test">
+                    <div className={styles.test}>
 
-                        <input
-                        type="text"
-                        className="field surname"
-                        id="nom"
-                        name="first_name"
-                        placeholder="Nom"
-                        required
-                        />
+                        <input type="text" className={`${styles.field} ${styles.surname}`} id="nom" name="first_name" placeholder="Nom" required/>
 
-                        <input
-                        type="text"
-                        className="field "
-                        id="prenom"
-                        name="last_name"
-                        placeholder="Prénom"
-                        required
-                        />
+                        <input type="text" className={styles.field} id="prenom" name="last_name" placeholder="Prénom" required/>
                     </div>
 
-                    <input
-                        type="email"
-                        className="field"
-                        name="email"
-                        placeholder="Email"
-                        required
-                    />
+                    <input type="email" className={styles.field} name="email" placeholder="Email" required/>
+
+                    <input type="password" className={styles.field} id="password" name="password" placeholder="Mot de passe" required/>
 
                     <input
-                        type="password"
-                        className="field"
-                        id="password"
-                        name="password"
-                        placeholder="Mot de passe"
-                        required
-                    />
+                        type="password" className={styles.field} id="confirm-password" name="confirm-password" placeholder="Confirmation de mot de passe" required/>
 
-                    <input
-                        type="password"
-                        className="field"
-                        id="confirm-password"
-                        name="confirm-password"
-                        placeholder="Confirmation de mot de passe"
-                        required
-                    />
+                    <p className={styles.checkbox}> <input type="checkbox" name="checkbox" defaultValue="validated" /> {" "} J{"'"}accepte les conditions d{"'"}utilisation et la politique de confidentialité.</p>
 
-                    <p className="checkbox">
-                        <input type="checkbox" name="checkbox" defaultValue="validated" />{" "}
-                        J accepte les conditions d utilisation et la politique de
-                        confidentialité.
-                    </p>
+                    <button className={styles.btn}>Valider</button>
 
-                    <button className="btn">Valider</button>
-
-                    <p className="lien_vers_page_connexion">
-                        Vous avez déjà un compte?{" "}
-                        <Link to= "/signin">Se connecter</Link>
-                    </p>
+                    <p className={styles.lien_vers_page_connexion}> Vous avez déjà un compte? {" "} <Link to= "/signin">Se connecter</Link> </p>
                 </div>
             </div>
         </div>

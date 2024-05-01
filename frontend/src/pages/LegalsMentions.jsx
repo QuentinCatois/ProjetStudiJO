@@ -1,5 +1,4 @@
 import { Link} from "react-router-dom"
-import "./LegalsMentions.css"
 
 //import images
 import logo1 from '../img/LegalsMention/logo_gdevqk_c_scale,w_154.png';

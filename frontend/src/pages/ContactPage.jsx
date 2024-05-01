@@ -1,5 +1,5 @@
 import { Link} from "react-router-dom"
-import "./ContactPage.css"
+import styles from "./ContactPage.module.scss"
 
 //import images breakpoints
 
@@ -43,7 +43,7 @@ import imageenvelop5 from '../img/ContactPage/flagmagsymbol/email_c2eis4_c_scale
 function App () {
     return (
         <>
-            <div>
+            <div className={styles.container}>
                 <header>
 
                     <h1>Contactez-nous</h1>
@@ -74,49 +74,21 @@ function App () {
                 </header>
 
                 <form>
-                    <div className="align">
+                    <div className={styles.align}>
+
                         <label htmlFor="nom"> </label>
-                        <input
-                            type="text"
-                            className="field surname"
-                            id="nom"
-                            name="nom"
-                            placeholder="Nom"
-                            maxLength={30}
-                            required=""
-                        />
+                        <input type="text" className={`${styles.field} ${styles.surname}`} id="nom" name="nom" placeholder="Nom" required/>
+
                         <label htmlFor="prenom"> </label>
-                        <input
-                            type="text"
-                            className="field "
-                            id="prenom"
-                            name="prenom"
-                            placeholder="Prénom"
-                            maxLength={30}
-                            required=""
-                        />
+                        <input type="text" className={styles.field} id="prenom" name="prenom" placeholder="Prénom" required/>
+
                     </div>
 
                     <label htmlFor="email"> </label>
-                    <input
-                    type="email"
-                    className="field"
-                    name="email"
-                    placeholder="Email"
-                    maxLength={100}
-                    required=""
-                    />
+                    <input type="email" className={styles.field} name="email" placeholder="Email" required/>
 
                     <label htmlFor="textarea"> </label>
-                    <textarea
-                    className="field"
-                    rows={10}
-                    name="textarea"
-                    placeholder="Message"
-                    maxLength={500}
-                    required=""
-                    defaultValue={" "}
-                    />
+                    <textarea className={styles.field} rows={10} name="textarea" placeholder="Message" required defaultValue={" "}/>
 
                     <button>envoyer</button>
 
@@ -138,7 +110,7 @@ function App () {
                         image240 + " 240w, "}
                         />
                         <img
-                        className="image_item-1_resizing"
+                        className={styles.image_item_1_resizing}
                         sizes="(max-width: 4667px) 30vw, 1400px"
                         srcSet={image360 + " 360w, " +
                         image651 + " 651w, " +
@@ -172,7 +144,7 @@ function App () {
                         srcSet={image120}
                         />
                         <img
-                        className="image_resizing"
+                        className={styles.image_resizing}
                         sizes="(max-width: 5120px) 10vw, 512px"
                         srcSet={image_120 + " 120w , " + 
                                 image512 + " 512w , "}
@@ -200,7 +172,7 @@ function App () {
                             srcSet={imagephone4}
                             />
                             <img
-                            className="image_resizing"
+                            className={styles.image_resizing}
                             sizes="(max-width: 5120px) 10vw, 512px"
                             srcSet={imagephone5 + " 120w , " + 
                                 imagephone6 + " 512w , "}
@@ -227,7 +199,7 @@ function App () {
                         srcSet={imageenvelop3}
                         />
                         <img
-                        className="image_resizing"
+                        className={styles.image_resizing}
                         sizes="(max-width: 5120px) 10vw, 512px"
                         srcSet={imageenvelop4 + " 120w , " + 
                             imageenvelop5 + " 512w , "}
@@ -244,7 +216,7 @@ function App () {
                 <item-7>email</item-7>
 
                 <footer>
-                    <Link to= "/">Page d acceuil</Link>
+                    <Link to= "/">Page d{"'"}acceuil</Link>
                 </footer>
             </div>    
             
