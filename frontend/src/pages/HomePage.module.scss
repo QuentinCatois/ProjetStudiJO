@@ -4,12 +4,6 @@
     --color3: white;
     --color4: greenyellow;
 }
-  
-body {
-    font-family: "Roboto Condensed";
-    font-size: 15px;
-    line-height: 20px;
-}
 
 .second_title {
     text-align: center;
@@ -21,9 +15,8 @@ body {
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.2fr 1fr 0.1fr 0.4fr 0.1fr 0.1fr 0.4fr 0.1fr 0.4fr 0.1fr 0.4fr 0.1fr 0.4fr 0.1fr;
+    grid-template-rows: 1fr 0.1fr 0.4fr 0.1fr 0.1fr 0.4fr 0.1fr 0.4fr 0.1fr 0.4fr 0.1fr 0.4fr 0.1fr;
     grid-template-areas:
-      "header header header header header header header header header header"
       "item-1 item-1 item-1 item-1 item-1 item-1 item-2 item-2 item-2 item-2"
       "item-3 item-3 item-3 item-3 item-3 item-3 item-3 item-3 item-3 item-3"
       "item-4 item-4 item-4 item-5 item-5 item-6 item-7 item-7 item-7 item-7"
@@ -38,10 +31,6 @@ body {
       " . item-18 item-18 item-18 item-20 item-20 item-20 item-20 item-20 . "
       "footer footer footer footer footer footer footer footer footer footer";
     grid-gap: 0.2rem;
-}
-  
-header {
-      grid-area: header;
 }
     
 #item-1 {
@@ -186,58 +175,6 @@ footer {
         grid-area: footer;
 }
 
-/*Header*/
-
-.Header {
-      display: grid;
-      grid-template-areas: "Logo Nav";
-      background-color: var(--color1);
-}
-
-.Logo {
-      display: flex; 
-      align-items: center;
-      color: #fff;
-}
-
-header h2 {
-      font-size: 20px;
-}
-
-.Nav{
-      grid-area: Nav;
-      display: grid;
-      grid-template-columns: repeat(2,auto);
-      justify-content: end;
-      align-content: space-evenly;
-}
-
-nav a{
-      text-decoration: none;
-      color: var(--color3);
-      font-size: 14px;
-      font-family: "Roboto Condensed";
-}
-
-nav a:hover{
-      color: var(--color4);
-}
-
-nav button {
-      padding: 4px;
-      background-color: var(--color1);
-      color: var(--color3);
-      border-radius:5px;
-      border-width: 0px;
-      border-color: var(--color1);
-      margin-right: 10px;
-}
-
-.img_header_sizing {
-          height: 20px;
-          padding-right: 10px; 
-}
-
 /*footer*/
 
 footer {
@@ -260,9 +197,8 @@ footer a:hover {
 @media (min-width: 551px) and (max-width: 760px) {
   .container {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 0.08fr 0.2fr 0.01fr 0.1fr 0.03fr 0.1fr 0.05fr 0.1fr 0.08fr;
+        grid-template-rows: 0.2fr 0.01fr 0.1fr 0.03fr 0.1fr 0.05fr 0.1fr 0.08fr;
         grid-template-areas:
-        "header header header header header header header header"
         "item-1 item-1 item-1 item-1 item-1 item-2 item-2 item-2"
         "item-3 item-3 item-3 item-3 item-3 item-3 item-3 item-3"
         "item-4 item-4 item-5 item-5 item-6 item-7 item-7 item-7"
@@ -285,24 +221,6 @@ footer a:hover {
     font-weight: 400;
     margin: 0;
   }
-
-  /*header*/
-  header h2 {
-    font-size: 15px;
-  }
-
-  .Nav a{
-    font-size: 12px;
-  }
-
-  nav button {
-    margin-right: 5px;
-  }
-
-  .img_header_sizing {
-        height: 20px;
-        padding-right: 5px; 
-      }
 
   /*items*/
 
@@ -329,9 +247,8 @@ footer a:hover {
 @media only screen and (max-width: 550px) {
   .container {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.2fr 0.6fr 0.5fr 0.1fr 0.2fr 0.2fr 0.05fr 0.2fr 0.1fr 0.2fr 0.1fr 0.2fr 0.1fr 0.2fr 0.1fr 0.1fr;
+    grid-template-rows: 0.6fr 0.5fr 0.1fr 0.2fr 0.2fr 0.05fr 0.2fr 0.1fr 0.2fr 0.1fr 0.2fr 0.1fr 0.2fr 0.1fr 0.1fr;
     grid-template-areas:
-      "header header header header"
       "item-1 item-1 item-1 item-1"
       "item-2 item-2 item-2 item-2"
       "item-3 item-3 item-3 item-3"
@@ -352,40 +269,6 @@ footer a:hover {
   body{
     font-size: 11px;
     line-height: 20px;
-  }
-
-  /*header*/
-
-  .Header {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .Logo{
-    justify-content: center;
-  }
-
-  header h2 {
-    font-size: 20px;    
-  }
-
-  .Nav a{
-    font-size: 12px;
-  }
-
-  .img_header_sizing {
-    height: 15px;
-    padding-right: 5px; 
-  }
-
-  nav button {
-    background-color: var(--color1);
-    color: var(--color3);
-    border-radius:5px;
-    border-width: 2px;
-    border-color: var(--color3);
-    margin: 5px;
-    width: 110px;
   }
 
   /*items*/

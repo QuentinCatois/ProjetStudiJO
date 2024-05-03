@@ -1,21 +1,8 @@
 import styles from "./HomePage.module.scss"
+import HomePageNavBar from '../components/HomePageNavBar';
 import { Link} from "react-router-dom"
 
 //import images breakpoints
-
-//header
-//logo JO
-import logo1 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_154.png';
-import logo2 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_77.png';
-import logo3 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_100.png';
-import logo4 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_120.png';
-import logo5 from '../img/HomePage/header/logo_ibvftx_ar_16_9,c_fill,g_auto__c_scale,w_154.png';
-
-//Logo links/buttons
-import cart from '../img/HomePage/header/Logo shopping cart.png';
-import tickets from '../img/HomePage/header/tickets.png';
-import useradd from '../img/HomePage/header/user.png';
-import usersignin from '../img/HomePage/header/User_connexion.png';
 
 //Eiffel Tower Picture
 import EffelTower1 from '../img/HomePage/EiffelTower/main_photo_luff0u_ar_1_1,c_fill,g_auto__c_scale,w_200.png';
@@ -157,371 +144,336 @@ function App () {
   
   return (
 
-    <div className={styles.container}>
+    <>
+      <div>
+        <HomePageNavBar />  {/* Render the NavBar component */}
+      </div>
 
-      <header className={styles.Header}>
-        <div className={styles.Logo}>
+
+      <div className={styles.container}>
+
+        <div id="item-1">
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              sizes="(max-width: 768px) 40vw, 307px"
+              srcSet={EffelTower1 + " 200w, " +
+              EffelTower2 + " 242w, " +
+              EffelTower3 + " 278w, " +
+              EffelTower4 + " 307w, "}/>
+            <source
+              media="(min-width: 768px) and (max-width: 991px)"
+              sizes="(max-width: 993px) 40vw, 397px"
+              srcSet={EffelTower5 + " 308w, " +
+              EffelTower6 + " 349w, " +
+              EffelTower7 + " 386w, " +
+              EffelTower8 + " 397w, "}/>
+            <source
+              media="(min-width: 992px) and (max-width: 1199px)"
+              sizes="(max-width: 1200px) 40vw, 480px"
+              srcSet={EffelTower8 + " 397w, " +
+              EffelTower9 + " 440w, " +
+              EffelTower10 + " 471w, " +
+              EffelTower11 + " 480w, "}/>
+            <img
+              className={styles.main_photo}
+              sizes="(max-width: 2553px) 40vw, 1021px"
+              srcSet={EffelTower12 + " 480w, " +
+              EffelTower13 + " 521w, " +
+              EffelTower14 + " 560w, " +
+              EffelTower15 + " 597w, "+
+              EffelTower16 + " 634w, " +
+              EffelTower17 + " 668w, " +
+              EffelTower18 + " 701w, "+
+              EffelTower19 + " 734w, " +
+              EffelTower20 + " 767w, " +
+              EffelTower21 + " 798w, " +
+              EffelTower22 + " 827w, " +
+              EffelTower23 + " 856w, "+
+              EffelTower24 + " 886w, " +
+              EffelTower25 + " 915w, " +
+              EffelTower26 + " 943w, "+
+              EffelTower27 + " 970w, " +
+              EffelTower28 + " 998w, " +
+              EffelTower29 + " 1019w, " +
+              EffelTower30 + " 1021w, "}
+              src={EffelTower30}
+              alt="Photo de la Tour Eiffel avec le symbol des JO et la phrase Bienvenue sue le site officiel des JO"
+            />
+          </picture>
+        </div>
+
+        <div id="item-2">
+          <p className={styles.paragraph_format}>
+            Les Jeux Olympiques de Paris vont durer pendant <b>16</b> jours, du 26 juillet au 11 août 2024. 
+
+            Les différentes compétitions pour les <b>32</b> sports vont se dérouler au sein de <b>35</b> lieux d’exception allant de la Concorde, au Champ de Mars, en passant par les Invalides, et 
+            bien d autres.
+            
+            Au total <b>10 500</b> athlètes vont participer, représentant <b>206</b> nationalites.</p>
+        </div>
+
+        <div id="item-3">
+          <h2 className={styles.first_title}>Rejoignez-nous et venez vivre une expérience unique !</h2>
+        </div>
+
+        <div id="item-4">
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              sizes="(max-width: 768px) 40vw, 307px"
+              srcSet={medals1 + " 200w, " +
+              medals2 + " 241w, " +
+              medals3 + " 276w, " +
+              medals4 + " 307w, "}/>
+            <source
+              media="(min-width: 768px) and (max-width: 991px)"
+              sizes="(max-width: 993px) 40vw, 397px"
+              srcSet={medals5 + " 308w, " +
+              medals6 + " 344w, " +
+              medals7 + " 382w, " +
+              medals8 + " 397w, "}/>
+            <source
+              media="(min-width: 992px) and (max-width: 1199px)"
+              sizes="(max-width: 1200px) 40vw, 480px"
+              srcSet={medals9 + " 397w, " +
+              medals10 + " 442w, " +
+              medals11 + " 478w, " +
+              medals12 + " 480w, "}/>
+            <img
+              className={styles.medals_photo}
+              sizes="(max-width: 3360px) 40vw, 1344px"
+              srcSet={medals13 + " 480w, " +
+              medals14 + " 617w, " +
+              medals15 + " 731w, "+
+              medals16 + " 840w, " +
+              medals17 + " 927w, " +
+              medals18 + " 1020w, "+
+              medals19 + " 1087w, " +
+              medals20 + " 1113w, " +
+              medals21 + " 1117w, " +
+              medals22 + " 1124w, " +
+              medals23 + " 1164w, "+
+              medals24 + " 1209w, " +
+              medals25 + " 1255w, " +
+              medals26 + " 1293w, " +
+              medals27 + " 1334w, " +
+              medals28 + " 1339w, " +
+              medals29 + " 1344w, "}
+              src={medals29}
+              alt="Photo_médailles_d'or, d'argent et de bronze"/>
+          </picture>
+        </div>
+
+        <div id="item-5">
+          <p className={styles.paragraph_format}>Trois magnifiques médailles représentant seront remises aux champions. Médailles en composants et matériaux recyclés.</p>
+        </div>
+
+        <div id="item-6">
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              sizes="(max-width: 770px) 10vw, 77px"
+              srcSet={torch1}/>
+            <source
+              media="(min-width: 768px) and (max-width: 991px)"
+              sizes="(max-width: 1000px) 10vw, 100px"
+              srcSet={torch2 + " 77w, " +
+              torch3 + " 100w, "}/>
+            <source
+              media="(min-width: 992px) and (max-width: 1199px)"
+              sizes="(max-width: 1200px) 20vw, 240px"
+              srcSet={torch4 + " 199w, " +
+              torch5 + " 240w, "}/>
+            <img
+              className={styles.torch_photo}
+              sizes="(max-width: 1790px) 20vw, 358px"
+              srcSet={torch6 + " 240w, " +
+              torch7 + " 300w, " +
+              torch8 + "358w, "}
+              src={torch8}
+              alt="Logo torche des JO"/>
+          </picture>
+        </div>
+
+        <div id="item-7">
+          <p className={styles.paragraph_format}>Le logo des Jeux Olympiques de Paris incarne parfaitement l esprit et l essence de la ville lumière. Au premier coup d œil, il évoque une torche flamboyante, symbole universel de la flamme olympique, porteur de valeurs d unité, de paix et d excellence sportive. Toutefois, ce n est pas tout ce que ce logo révèle si on y regarde de plus près</p>
+        </div>
+
+        <div id="item-8">
+          <h2 className={styles.second_title}>Assistez à de multiples disciplines sportives</h2>
+        </div>
+
+        <div id="item-9">
           <picture>
             <source
               media="(max-width: 767px)"
               sizes="(max-width: 770px) 20vw, 154px"
-              srcSet={logo1}
-            />
+              srcSet={athletism1}/>
+            <source
+              media="(min-width: 768px) and (max-width: 991px)"
+              sizes="(max-width: 995px) 20vw, 199px"
+              srcSet={athletism1 + " 154w, " +
+              athletism2 + " 199w, "}/>
+            <source
+              media="(min-width: 992px) and (max-width: 1199px)"
+              sizes="(max-width: 1200px) 20vw, 240px"
+              srcSet={athletism2 + " 199w, " +
+              athletism3 + " 240w, "}/>
+            <img
+              className={styles.athletism}
+              sizes="(max-width: 4267px) 30vw, 1280px"
+              srcSet={athletism4 + " 360w, " +
+              athletism5 + " 558w, " +
+              athletism6 + " 718w, "+
+              athletism7 + " 842w, " +
+              athletism8 + " 989w, " +
+              athletism9 + " 1116w, "+
+              athletism10 + " 1225w, " +
+              athletism11 + " 1277w, " +
+              athletism12 + " 1280w, "}
+              src={athletism12}
+              alt="photo athlètisme course"/>
+          </picture>
+        </div>
+
+        <div id="item-10">
+          <h3 className={styles.h3_center}>Athlétisme</h3>
+        </div>
+
+        <div id="item-11">
+          <p>Une large gamme d épreuves englobant les épreuves de sprint, marathon, sauts en longueur et en hauteur, le lancer de javelot, et bien d autres diciplines.</p>
+        </div>
+
+        <div id="item-12">
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              sizes="(max-width: 770px) 10vw, 77px"
+              srcSet={basketball1}/>
             <source
               media="(min-width: 768px) and (max-width: 991px)"
               sizes="(max-width: 1000px) 10vw, 100px"
-              srcSet={logo2 + " 77w, " +
-              logo3 + " 100w, "}
-            />
+              srcSet={basketball2 + " 154w, " +
+              basketball3 + " 199w, "}/>
             <source
               media="(min-width: 992px) and (max-width: 1199px)"
-              sizes="(max-width: 1200px) 10vw, 120px"
-              srcSet={logo3 + " 100w, " +
-              logo4 + " 120w, "}
-            />
+              sizes="(max-width: 1200px) 20vw, 240px"
+              srcSet={basketball4 + " 199w, " +
+              basketball5 + " 240w, "}/>
             <img
-              sizes="(max-width: 1540px) 10vw, 154px"
-              srcSet={logo5}
-              src={logo5}
-              alt="Logo_JO"
-            />
-          </picture>
-
-          <h2>Jeux Olympiques France</h2>
-
+              className={styles.basketball}
+              sizes="(max-width: 4267px) 30vw, 1280px"
+              srcSet={basketball6 + " 360w, " +
+              basketball7 + " 518w, " +
+              basketball8 + " 655w, "+
+              basketball9 + " 770w, " +
+              basketball10 + " 886w, " +
+              basketball11 + " 992w, "+
+              basketball12 + " 1091w, " +
+              basketball13 + " 1193w, " +
+              basketball14 + " 1253w, " +
+              basketball15 + " 1280w, "}
+              src={basketball15}
+              alt="photo basketball"/>
+            </picture>
         </div>
-        <nav className={styles.Nav}>
-          <div>
-            <button><Link to= "/tickets"><img className={styles.img_header_sizing} src={tickets} alt="logo_tickets"/>Billetterie</Link></button>
-            <button><a href="#"><img className={styles.img_header_sizing} src={cart} alt="logo_cart"/>Panier</a></button>
-          </div>
-          <div>
-            <button><Link to= "/signin"><img className={styles.img_header_sizing} src={usersignin} alt="logo_user_connexion"/>Se connecter</Link></button>
-            <button><Link to= "/register"><img className={styles.img_header_sizing} src={useradd} alt="logo_user_subscribtion"/>S{"'"}inscrire</Link></button>
-          </div>
-        </nav>
-      </header>
 
-      <div id="item-1">
-        <picture>
-          <source
-            media="(max-width: 767px)"
-            sizes="(max-width: 768px) 40vw, 307px"
-            srcSet={EffelTower1 + " 200w, " +
-            EffelTower2 + " 242w, " +
-            EffelTower3 + " 278w, " +
-            EffelTower4 + " 307w, "}/>
-          <source
-            media="(min-width: 768px) and (max-width: 991px)"
-            sizes="(max-width: 993px) 40vw, 397px"
-            srcSet={EffelTower5 + " 308w, " +
-            EffelTower6 + " 349w, " +
-            EffelTower7 + " 386w, " +
-            EffelTower8 + " 397w, "}/>
-          <source
-            media="(min-width: 992px) and (max-width: 1199px)"
-            sizes="(max-width: 1200px) 40vw, 480px"
-            srcSet={EffelTower8 + " 397w, " +
-            EffelTower9 + " 440w, " +
-            EffelTower10 + " 471w, " +
-            EffelTower11 + " 480w, "}/>
-          <img
-            className={styles.main_photo}
-            sizes="(max-width: 2553px) 40vw, 1021px"
-            srcSet={EffelTower12 + " 480w, " +
-            EffelTower13 + " 521w, " +
-            EffelTower14 + " 560w, " +
-            EffelTower15 + " 597w, "+
-            EffelTower16 + " 634w, " +
-            EffelTower17 + " 668w, " +
-            EffelTower18 + " 701w, "+
-            EffelTower19 + " 734w, " +
-            EffelTower20 + " 767w, " +
-            EffelTower21 + " 798w, " +
-            EffelTower22 + " 827w, " +
-            EffelTower23 + " 856w, "+
-            EffelTower24 + " 886w, " +
-            EffelTower25 + " 915w, " +
-            EffelTower26 + " 943w, "+
-            EffelTower27 + " 970w, " +
-            EffelTower28 + " 998w, " +
-            EffelTower29 + " 1019w, " +
-            EffelTower30 + " 1021w, "}
-            src={EffelTower30}
-            alt="Photo de la Tour Eiffel avec le symbol des JO et la phrase Bienvenue sue le site officiel des JO"
-          />
-        </picture>
+        <div id="item-13">
+          <h3 className={styles.h3_center}>Sports d équipe</h3>
+        </div>
+
+        <div id="item-14">
+          <p>Variété de sports comprenant le basketball, le volleyball, le handball, le football.</p>
+        </div>
+
+        <div id="item-15">
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              sizes="(max-width: 770px) 20vw, 154px"
+              srcSet={fencing1}/>
+            <source
+              media="(min-width: 768px) and (max-width: 991px)"
+              sizes="(max-width: 995px) 20vw, 199px"
+              srcSet={fencing2 + " 154w, " +
+              fencing3 + " 199w, "}/>
+            <source
+              media="(min-width: 992px) and (max-width: 1199px)"
+              sizes="(max-width: 1200px) 20vw, 240px"
+              srcSet={fencing4 + " 199w, " +
+              fencing5+ " 240w, "}/>
+            <img
+              className={styles.fencing}
+              sizes="(max-width: 4267px) 30vw, 1280px"
+              srcSet={fencing6 + " 360w, " +
+              fencing7 + " 650w, " +
+              fencing8 + " 982w, "+
+              fencing9 + " 1189w, " +
+              fencing10 + " 1280w, "}
+              src={fencing10}
+              alt="photo escrimeurs en match"/>
+            </picture>
+        </div>
+
+        <div id="item-16">
+          <h3 className={styles.h3_center}>Sports de précision</h3>
+        </div>
+
+        <div id="item-17">
+          <p>Disciplines alliant dextérité, concentration : tir à l arc, l escrime, la voile.</p>
+        </div>
+
+        <div id="item-18">
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              sizes="(max-width: 770px) 20vw, 154px"
+              srcSet={swimming1}/>
+            <source
+              media="(min-width: 768px) and (max-width: 991px)"
+              sizes="(max-width: 995px) 20vw, 199px"
+              srcSet={swimming2 + " 154w, " +
+              swimming3+ " 199w, "}/>
+            <source
+              media="(min-width: 992px) and (max-width: 1199px)"
+              sizes="(max-width: 1200px) 20vw, 240px"
+              srcSet={swimming4 + " 199w, " +
+              swimming5+ " 240w, "}/>
+            <img
+              className={styles.swimming}
+              sizes="(max-width: 4267px) 30vw, 1280px"
+              srcSet={swimming6 + " 360w, " +
+              swimming7 + " 537w, " +
+              swimming8 + " 690w, "+
+              swimming9 + " 812w, " +
+              swimming10 + " 922w, " +
+              swimming11 + " 1016w, "+
+              swimming12 + " 1118w, " +
+              swimming13 + " 1209w, " +
+              swimming14 + " 1264w, " +
+              swimming15 + " 1280w, " }
+              src={swimming15}
+              alt="photo nageuse faisant du crawl"/>
+            </picture>
+        </div>
+
+        <div id="item-19">
+          <h3 className={styles.h3_center}>Sports aquatiques</h3>
+        </div>
+
+        <div id="item-20">
+          <p>L habilité, la puissance et la grâce feront partie des traits de caractère des athlètes particpant à la natation, le water-polo, la natation synchronisée.</p>
+        </div>
+
+        <footer>
+          <Link to= "/register">Contact</Link>
+          <Link to= "/register">Crédits et mentions<br />légales</Link>
+          <Link to= "/register">Conditions générales<br />d achat</Link>
+        </footer>
       </div>
 
-      <div id="item-2">
-        <p className={styles.paragraph_format}>
-          Les Jeux Olympiques de Paris vont durer pendant <b>16</b> jours, du 26 juillet au 11 août 2024. 
-
-          Les différentes compétitions pour les <b>32</b> sports vont se dérouler au sein de <b>35</b> lieux d’exception allant de la Concorde, au Champ de Mars, en passant par les Invalides, et 
-          bien d autres.
-          
-          Au total <b>10 500</b> athlètes vont participer, représentant <b>206</b> nationalites.</p>
-      </div>
-
-      <div id="item-3">
-        <h2 className={styles.first_title}>Rejoignez-nous et venez vivre une expérience unique !</h2>
-      </div>
-
-      <div id="item-4">
-        <picture>
-          <source
-            media="(max-width: 767px)"
-            sizes="(max-width: 768px) 40vw, 307px"
-            srcSet={medals1 + " 200w, " +
-            medals2 + " 241w, " +
-            medals3 + " 276w, " +
-            medals4 + " 307w, "}/>
-          <source
-            media="(min-width: 768px) and (max-width: 991px)"
-            sizes="(max-width: 993px) 40vw, 397px"
-            srcSet={medals5 + " 308w, " +
-            medals6 + " 344w, " +
-            medals7 + " 382w, " +
-            medals8 + " 397w, "}/>
-          <source
-            media="(min-width: 992px) and (max-width: 1199px)"
-            sizes="(max-width: 1200px) 40vw, 480px"
-            srcSet={medals9 + " 397w, " +
-            medals10 + " 442w, " +
-            medals11 + " 478w, " +
-            medals12 + " 480w, "}/>
-          <img
-            className={styles.medals_photo}
-            sizes="(max-width: 3360px) 40vw, 1344px"
-            srcSet={medals13 + " 480w, " +
-            medals14 + " 617w, " +
-            medals15 + " 731w, "+
-            medals16 + " 840w, " +
-            medals17 + " 927w, " +
-            medals18 + " 1020w, "+
-            medals19 + " 1087w, " +
-            medals20 + " 1113w, " +
-            medals21 + " 1117w, " +
-            medals22 + " 1124w, " +
-            medals23 + " 1164w, "+
-            medals24 + " 1209w, " +
-            medals25 + " 1255w, " +
-            medals26 + " 1293w, " +
-            medals27 + " 1334w, " +
-            medals28 + " 1339w, " +
-            medals29 + " 1344w, "}
-            src={medals29}
-            alt="Photo_médailles_d'or, d'argent et de bronze"/>
-        </picture>
-      </div>
-
-      <div id="item-5">
-        <p className={styles.paragraph_format}>Trois magnifiques médailles représentant seront remises aux champions. Médailles en composants et matériaux recyclés.</p>
-      </div>
-
-      <div id="item-6">
-        <picture>
-          <source
-            media="(max-width: 767px)"
-            sizes="(max-width: 770px) 10vw, 77px"
-            srcSet={torch1}/>
-          <source
-            media="(min-width: 768px) and (max-width: 991px)"
-            sizes="(max-width: 1000px) 10vw, 100px"
-            srcSet={torch2 + " 77w, " +
-            torch3 + " 100w, "}/>
-          <source
-            media="(min-width: 992px) and (max-width: 1199px)"
-            sizes="(max-width: 1200px) 20vw, 240px"
-            srcSet={torch4 + " 199w, " +
-            torch5 + " 240w, "}/>
-          <img
-            className={styles.torch_photo}
-            sizes="(max-width: 1790px) 20vw, 358px"
-            srcSet={torch6 + " 240w, " +
-            torch7 + " 300w, " +
-            torch8 + "358w, "}
-            src={torch8}
-            alt="Logo torche des JO"/>
-        </picture>
-      </div>
-
-      <div id="item-7">
-        <p className={styles.paragraph_format}>Le logo des Jeux Olympiques de Paris incarne parfaitement l esprit et l essence de la ville lumière. Au premier coup d œil, il évoque une torche flamboyante, symbole universel de la flamme olympique, porteur de valeurs d unité, de paix et d excellence sportive. Toutefois, ce n est pas tout ce que ce logo révèle si on y regarde de plus près</p>
-      </div>
-
-      <div id="item-8">
-        <h2 className={styles.second_title}>Assistez à de multiples disciplines sportives</h2>
-      </div>
-
-      <div id="item-9">
-        <picture>
-          <source
-            media="(max-width: 767px)"
-            sizes="(max-width: 770px) 20vw, 154px"
-            srcSet={athletism1}/>
-          <source
-            media="(min-width: 768px) and (max-width: 991px)"
-            sizes="(max-width: 995px) 20vw, 199px"
-            srcSet={athletism1 + " 154w, " +
-            athletism2 + " 199w, "}/>
-          <source
-            media="(min-width: 992px) and (max-width: 1199px)"
-            sizes="(max-width: 1200px) 20vw, 240px"
-            srcSet={athletism2 + " 199w, " +
-            athletism3 + " 240w, "}/>
-          <img
-            className={styles.athletism}
-            sizes="(max-width: 4267px) 30vw, 1280px"
-            srcSet={athletism4 + " 360w, " +
-            athletism5 + " 558w, " +
-            athletism6 + " 718w, "+
-            athletism7 + " 842w, " +
-            athletism8 + " 989w, " +
-            athletism9 + " 1116w, "+
-            athletism10 + " 1225w, " +
-            athletism11 + " 1277w, " +
-            athletism12 + " 1280w, "}
-            src={athletism12}
-            alt="photo athlètisme course"/>
-        </picture>
-      </div>
-
-      <div id="item-10">
-        <h3 className={styles.h3_center}>Athlétisme</h3>
-      </div>
-
-      <div id="item-11">
-        <p>Une large gamme d épreuves englobant les épreuves de sprint, marathon, sauts en longueur et en hauteur, le lancer de javelot, et bien d autres diciplines.</p>
-      </div>
-
-      <div id="item-12">
-        <picture>
-          <source
-            media="(max-width: 767px)"
-            sizes="(max-width: 770px) 10vw, 77px"
-            srcSet={basketball1}/>
-          <source
-            media="(min-width: 768px) and (max-width: 991px)"
-            sizes="(max-width: 1000px) 10vw, 100px"
-            srcSet={basketball2 + " 154w, " +
-            basketball3 + " 199w, "}/>
-          <source
-            media="(min-width: 992px) and (max-width: 1199px)"
-            sizes="(max-width: 1200px) 20vw, 240px"
-            srcSet={basketball4 + " 199w, " +
-            basketball5 + " 240w, "}/>
-          <img
-            className={styles.basketball}
-            sizes="(max-width: 4267px) 30vw, 1280px"
-            srcSet={basketball6 + " 360w, " +
-            basketball7 + " 518w, " +
-            basketball8 + " 655w, "+
-            basketball9 + " 770w, " +
-            basketball10 + " 886w, " +
-            basketball11 + " 992w, "+
-            basketball12 + " 1091w, " +
-            basketball13 + " 1193w, " +
-            basketball14 + " 1253w, " +
-            basketball15 + " 1280w, "}
-            src={basketball15}
-            alt="photo basketball"/>
-          </picture>
-      </div>
-
-      <div id="item-13">
-        <h3 className={styles.h3_center}>Sports d équipe</h3>
-      </div>
-
-      <div id="item-14">
-        <p>Variété de sports comprenant le basketball, le volleyball, le handball, le football.</p>
-      </div>
-
-      <div id="item-15">
-        <picture>
-          <source
-            media="(max-width: 767px)"
-            sizes="(max-width: 770px) 20vw, 154px"
-            srcSet={fencing1}/>
-          <source
-            media="(min-width: 768px) and (max-width: 991px)"
-            sizes="(max-width: 995px) 20vw, 199px"
-            srcSet={fencing2 + " 154w, " +
-            fencing3 + " 199w, "}/>
-          <source
-            media="(min-width: 992px) and (max-width: 1199px)"
-            sizes="(max-width: 1200px) 20vw, 240px"
-            srcSet={fencing4 + " 199w, " +
-            fencing5+ " 240w, "}/>
-          <img
-            className={styles.fencing}
-            sizes="(max-width: 4267px) 30vw, 1280px"
-            srcSet={fencing6 + " 360w, " +
-            fencing7 + " 650w, " +
-            fencing8 + " 982w, "+
-            fencing9 + " 1189w, " +
-            fencing10 + " 1280w, "}
-            src={fencing10}
-            alt="photo escrimeurs en match"/>
-          </picture>
-      </div>
-
-      <div id="item-16">
-        <h3 className={styles.h3_center}>Sports de précision</h3>
-      </div>
-
-      <div id="item-17">
-        <p>Disciplines alliant dextérité, concentration : tir à l arc, l escrime, la voile.</p>
-      </div>
-
-      <div id="item-18">
-        <picture>
-          <source
-            media="(max-width: 767px)"
-            sizes="(max-width: 770px) 20vw, 154px"
-            srcSet={swimming1}/>
-          <source
-            media="(min-width: 768px) and (max-width: 991px)"
-            sizes="(max-width: 995px) 20vw, 199px"
-            srcSet={swimming2 + " 154w, " +
-            swimming3+ " 199w, "}/>
-          <source
-            media="(min-width: 992px) and (max-width: 1199px)"
-            sizes="(max-width: 1200px) 20vw, 240px"
-            srcSet={swimming4 + " 199w, " +
-            swimming5+ " 240w, "}/>
-          <img
-            className={styles.swimming}
-            sizes="(max-width: 4267px) 30vw, 1280px"
-            srcSet={swimming6 + " 360w, " +
-            swimming7 + " 537w, " +
-            swimming8 + " 690w, "+
-            swimming9 + " 812w, " +
-            swimming10 + " 922w, " +
-            swimming11 + " 1016w, "+
-            swimming12 + " 1118w, " +
-            swimming13 + " 1209w, " +
-            swimming14 + " 1264w, " +
-            swimming15 + " 1280w, " }
-            src={swimming15}
-            alt="photo nageuse faisant du crawl"/>
-          </picture>
-      </div>
-
-      <div id="item-19">
-        <h3 className={styles.h3_center}>Sports aquatiques</h3>
-      </div>
-
-      <div id="item-20">
-        <p>L habilité, la puissance et la grâce feront partie des traits de caractère des athlètes particpant à la natation, le water-polo, la natation synchronisée.</p>
-      </div>
-
-      <footer>
-        <Link to= "/register">Contact</Link>
-        <Link to= "/register">Crédits et mentions<br />légales</Link>
-        <Link to= "/register">Conditions générales<br />d achat</Link>
-      </footer>
-    </div>
+    </>
 
   );
 }
