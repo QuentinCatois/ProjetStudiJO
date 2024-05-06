@@ -6,7 +6,7 @@ class TicketsSerializer(serializers.ModelSerializer):
         model = tickets #model to serialize
         fields = ['name',
                   'ville',
-                  'lieu',
+                  'categories_id',
                   'date',
                   'tickets_prix',
-                  'thumbnail'] #fileds we are intrested in
+                  'thumbnail'] #fields we are intrested in
