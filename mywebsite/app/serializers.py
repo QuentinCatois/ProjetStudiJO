@@ -7,3 +7,4 @@ class CreateUserSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = UserAccount # model used for the serializer
         fields = ['id', 'email', 'first_name', 'last_name', 'password'] # fields that should be included in the serializer
+

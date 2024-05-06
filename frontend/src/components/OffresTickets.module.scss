@@ -1,0 +1,308 @@
+.container {
+    display: grid; /* Arrange image and content section side-by-side */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+        "item-1 item-2 item-3 item-4 item-7 item-8 item-9"
+        "item-1 item-2 item-5 item-6 item-7 item-10 item-10"
+    ;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 25px;
+    max-width: 700;
+    grid-gap: 5px;
+}
+
+.item_1{
+    grid-area: item-1;
+    justify-self: center;
+    align-self: center;
+    height: 70px;
+}
+
+.item_2{
+    grid-area: item-2;
+    justify-self: center;
+    align-self: center;
+}
+.item_3{
+    grid-area: item-3;
+    width: 150px;
+    height: 30px;
+    border: 1px solid;
+    align-self: center;
+}
+.item_4{
+    grid-area: item-4;
+    width: 100px;
+    height: 30px;
+    border: 1px solid;
+    align-self: center;
+}
+.item_5{
+    grid-area: item-5;
+    width: 150px;
+    height: 30px;
+    border: 1px solid;
+    align-self: center;
+}
+.item_6{
+    grid-area: item-6;
+    width: 100px;
+    height: 30px;
+    border: 1px solid;
+    align-self: center;
+}
+.item_7{
+    grid-area: item-7;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+}
+
+.rounding_button{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+.rounding_button:hover{
+    background-color: var(--color1);
+    color: white;
+}
+
+.item_8{
+    grid-area: item-8;
+}
+.item_9{
+    grid-area: item-9;
+}
+.item_10{
+    grid-area: item-10;
+    border-radius: 5px;
+    align-self: center;
+    height: 30px;
+    max-width: 200px;
+}
+
+.item_10:hover{
+    background-color: var(--color1);
+    color: white;
+}
+
+
+@media (min-width: 551px) and (max-width: 760px) {
+
+
+    .container{
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid;
+        border-radius: 25px;
+        max-width: 500px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: 
+            "item-1 item-2 item-3 item-4"
+            "item-1 item2 item-5 item-6"
+            "item-7 item-8 item-9 item-10"
+        ;
+    }
+
+    .item_1{
+        grid-area: item-1;
+        justify-self: center;
+        align-self: center;
+        height: 90px;
+    }
+    
+    .item_2{
+        grid-area: item-2;
+        justify-self: center;
+        align-self: center;
+    }
+    .item_3{
+        grid-area: item-3;
+        width: 150px;
+        height: 30px;
+        border: 1px solid;
+        align-self: center;
+    }
+    .item_4{
+        grid-area: item-4;
+        width: 100px;
+        height: 30px;
+        border: 1px solid;
+        align-self: center;
+    }
+    .item_5{
+        grid-area: item-5;
+        width: 150px;
+        height: 30px;
+        border: 1px solid;
+        align-self: center;
+    }
+    .item_6{
+        grid-area: item-6;
+        width: 100px;
+        height: 30px;
+        border: 1px solid;
+        align-self: center;
+    }
+    .item_7{
+        grid-area: item-7;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .rounding_button{
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+    }
+    
+    .rounding_button:hover{
+        background-color: var(--color1);
+        color: white;
+    }
+    
+    .item_8{
+        grid-area: item-8;
+    }
+    .item_9{
+        grid-area: item-9;
+    }
+    .item_10{
+        grid-area: item-10;
+        border-radius: 5px;
+        align-self: center;
+        height: 40px;
+    }
+    
+    .item_10:hover{
+        background-color: var(--color1);
+        color: white;
+    }   
+        
+}  
+
+@media only screen and (max-width: 550px) {
+
+    .container{
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid;
+        border-radius: 25px;
+        max-width: 250px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+            "item-1 item-2"
+            "item-3 item-4"
+            "item-5 item-6"
+            "item-7 item-7"
+            "item-8 item-9"
+            "item-10 item-10"
+        ;
+        max-height: 400px;
+    }
+
+    .item_1{
+        grid-area: item-1;
+        justify-self: center;
+        align-self: center;
+        height: 90px;
+    }
+    
+    .item_2{
+        grid-area: item-2;
+        justify-self: center;
+        align-self: center;
+    }
+    .item_3{
+        grid-area: item-3;
+        width: 150px;
+        height: 30px;
+        border: 1px solid;
+        align-self: center;
+    }
+    .item_4{
+        grid-area: item-4;
+        width: 80px;
+        height: 30px;
+        border: 1px solid;
+        align-self: center;
+    }
+    .item_5{
+        grid-area: item-5;
+        width: 150px;
+        height: 30px;
+        border: 1px solid;
+        align-self: center;
+    }
+    .item_6{
+        grid-area: item-6;
+        width: 80px;
+        height: 30px;
+        border: 1px solid;
+        align-self: center;
+    }
+    .item_7{
+        grid-area: item-7;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .rounding_button{
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+    }
+    
+    .rounding_button:hover{
+        background-color: var(--color1);
+        color: white;
+    }
+    
+    .item_8{
+        grid-area: item-8;
+    }
+    .item_9{
+        grid-area: item-9;
+    }
+    .item_10{
+        grid-area: item-10;
+        border-radius: 5px;
+        align-self: center;
+        height: 40px;
+    }
+    
+    .item_10:hover{
+        background-color: var(--color1);
+        color: white;
+    }   
+
+}
+
+
+
+
+
+
+
+
+
+
+

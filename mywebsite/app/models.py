@@ -34,6 +34,9 @@ class categories_offres(models.Model):
         verbose_name = ("Categories offres")
         verbose_name_plural = ("Categories offres")
 
+    def __str__(self):
+        return self.categories
+
 class tickets(models.Model):
     name = models.CharField(max_length=150)
     ville = models.CharField(max_length=50)
