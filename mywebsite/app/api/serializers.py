@@ -9,4 +9,4 @@ class TicketsSerializer(serializers.ModelSerializer):
                   'categories_id',
                   'date',
                   'tickets_prix',
-                  'thumbnail'] #fields we are intrested in
+                  'thumbnail'] #fields we are interested in

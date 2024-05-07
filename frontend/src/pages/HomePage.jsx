@@ -152,7 +152,7 @@ function App () {
 
       <div className={styles.container}>
 
-        <div id="item-1">
+        <div className={styles.item_1}>
           <picture>
             <source
               media="(max-width: 767px)"
@@ -203,7 +203,7 @@ function App () {
           </picture>
         </div>
 
-        <div id="item-2">
+        <div className={styles.item_2}>
           <p className={styles.paragraph_format}>
             Les Jeux Olympiques de Paris vont durer pendant <b>16</b> jours, du 26 juillet au 11 août 2024. 
 
@@ -213,11 +213,11 @@ function App () {
             Au total <b>10 500</b> athlètes vont participer, représentant <b>206</b> nationalites.</p>
         </div>
 
-        <div id="item-3">
+        <div className={styles.item_3}>
           <h2 className={styles.first_title}>Rejoignez-nous et venez vivre une expérience unique !</h2>
         </div>
 
-        <div id="item-4">
+        <div className={styles.item_4}>
           <picture>
             <source
               media="(max-width: 767px)"
@@ -265,11 +265,11 @@ function App () {
           </picture>
         </div>
 
-        <div id="item-5">
+        <div className={styles.item_5}>
           <p className={styles.paragraph_format}>Trois magnifiques médailles représentant seront remises aux champions. Médailles en composants et matériaux recyclés.</p>
         </div>
 
-        <div id="item-6">
+        <div className={styles.item_6}>
           <picture>
             <source
               media="(max-width: 767px)"
@@ -296,15 +296,15 @@ function App () {
           </picture>
         </div>
 
-        <div id="item-7">
+        <div className={styles.item_7}>
           <p className={styles.paragraph_format}>Le logo des Jeux Olympiques de Paris incarne parfaitement l esprit et l essence de la ville lumière. Au premier coup d œil, il évoque une torche flamboyante, symbole universel de la flamme olympique, porteur de valeurs d unité, de paix et d excellence sportive. Toutefois, ce n est pas tout ce que ce logo révèle si on y regarde de plus près</p>
         </div>
 
-        <div id="item-8">
+        <div className={styles.item_8}>
           <h2 className={styles.second_title}>Assistez à de multiples disciplines sportives</h2>
         </div>
 
-        <div id="item-9">
+        <div className={styles.item_9}>
           <picture>
             <source
               media="(max-width: 767px)"
@@ -337,15 +337,15 @@ function App () {
           </picture>
         </div>
 
-        <div id="item-10">
+        <div className={styles.item_10}>
           <h3 className={styles.h3_center}>Athlétisme</h3>
         </div>
 
-        <div id="item-11">
-          <p>Une large gamme d épreuves englobant les épreuves de sprint, marathon, sauts en longueur et en hauteur, le lancer de javelot, et bien d autres diciplines.</p>
+        <div className={styles.item_11}>
+          <p>Une large gamme d{"'"}épreuves englobant les épreuves de sprint, marathon, sauts en longueur et en hauteur, le lancer de javelot, et bien d autres diciplines.</p>
         </div>
 
-        <div id="item-12">
+        <div className={styles.item_12}>
           <picture>
             <source
               media="(max-width: 767px)"
@@ -379,15 +379,15 @@ function App () {
             </picture>
         </div>
 
-        <div id="item-13">
+        <div className={styles.item_13}>
           <h3 className={styles.h3_center}>Sports d équipe</h3>
         </div>
 
-        <div id="item-14">
+        <div className={styles.item_14}>
           <p>Variété de sports comprenant le basketball, le volleyball, le handball, le football.</p>
         </div>
 
-        <div id="item-15">
+        <div className={styles.item_15}>
           <picture>
             <source
               media="(max-width: 767px)"
@@ -416,15 +416,15 @@ function App () {
             </picture>
         </div>
 
-        <div id="item-16">
+        <div className={styles.item_16}>
           <h3 className={styles.h3_center}>Sports de précision</h3>
         </div>
 
-        <div id="item-17">
+        <div className={styles.item_17}>
           <p>Disciplines alliant dextérité, concentration : tir à l arc, l escrime, la voile.</p>
         </div>
 
-        <div id="item-18">
+        <div className={styles.item_18}>
           <picture>
             <source
               media="(max-width: 767px)"
@@ -458,11 +458,11 @@ function App () {
             </picture>
         </div>
 
-        <div id="item-19">
+        <div className={styles.item_19}>
           <h3 className={styles.h3_center}>Sports aquatiques</h3>
         </div>
 
-        <div id="item-20">
+        <div className={styles.item_20}>
           <p>L habilité, la puissance et la grâce feront partie des traits de caractère des athlètes particpant à la natation, le water-polo, la natation synchronisée.</p>
         </div>
 

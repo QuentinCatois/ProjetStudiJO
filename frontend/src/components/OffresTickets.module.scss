@@ -1,9 +1,17 @@
+.search_field {
+    padding: 5px;
+    margin: 10px 10px 5px 10px;
+    border-radius: 5px;
+}
+
 .container {
     display: grid; /* Arrange image and content section side-by-side */
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
+        "item-1 item-2 item-11 item-12 item-7 item-8 item-9"
         "item-1 item-2 item-3 item-4 item-7 item-8 item-9"
+        "item-1 item-2 item-13 item-14 item-7 item-10 item-10"
         "item-1 item-2 item-5 item-6 item-7 item-10 item-10"
     ;
     padding: 5px;
@@ -25,6 +33,7 @@
     grid-area: item-2;
     justify-self: center;
     align-self: center;
+    text-align: center;
 }
 .item_3{
     grid-area: item-3;
@@ -32,6 +41,7 @@
     height: 30px;
     border: 1px solid;
     align-self: center;
+    text-align: center;
 }
 .item_4{
     grid-area: item-4;
@@ -39,6 +49,7 @@
     height: 30px;
     border: 1px solid;
     align-self: center;
+    text-align: center;
 }
 .item_5{
     grid-area: item-5;
@@ -46,6 +57,7 @@
     height: 30px;
     border: 1px solid;
     align-self: center;
+    text-align: center;
 }
 .item_6{
     grid-area: item-6;
@@ -53,6 +65,7 @@
     height: 30px;
     border: 1px solid;
     align-self: center;
+    text-align: center;
 }
 .item_7{
     grid-area: item-7;
@@ -77,9 +90,13 @@
 
 .item_8{
     grid-area: item-8;
+    display: flex;
+    align-items: center;
 }
 .item_9{
     grid-area: item-9;
+    display: flex;
+    align-items: center;
 }
 .item_10{
     grid-area: item-10;
@@ -94,6 +111,21 @@
     color: white;
 }
 
+.item_11{
+    grid-area: item-11;
+}
+
+.item_12{
+    grid-area: item-12;
+}
+
+.item_13{
+    grid-area: item-13;
+}
+
+.item_14{
+    grid-area: item-14;
+}
 
 @media (min-width: 551px) and (max-width: 760px) {
 
@@ -108,7 +140,9 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         grid-template-areas: 
+            "item-1 item-2 item-11 item-12"
             "item-1 item-2 item-3 item-4"
+            "item-1 item2 item-13 item-14"
             "item-1 item2 item-5 item-6"
             "item-7 item-8 item-9 item-10"
         ;
@@ -191,7 +225,23 @@
         background-color: var(--color1);
         color: white;
     }   
-        
+
+    .item_11{
+        grid-area: item-11;
+    }
+    
+    .item_12{
+        grid-area: item-12;
+    }
+    
+    .item_13{
+        grid-area: item-13;
+    }
+    
+    .item_14{
+        grid-area: item-14;
+    }
+
 }  
 
 @media only screen and (max-width: 550px) {
@@ -207,7 +257,9 @@
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-areas: 
             "item-1 item-2"
+            "item-11 item-12"
             "item-3 item-4"
+            "item-13 item-14"
             "item-5 item-6"
             "item-7 item-7"
             "item-8 item-9"
@@ -292,7 +344,23 @@
     .item_10:hover{
         background-color: var(--color1);
         color: white;
-    }   
+    } 
+    
+    .item_11{
+        grid-area: item-11;
+    }
+    
+    .item_12{
+        grid-area: item-12;
+    }
+    
+    .item_13{
+        grid-area: item-13;
+    }
+    
+    .item_14{
+        grid-area: item-14;
+    }
 
 }
 

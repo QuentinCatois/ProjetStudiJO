@@ -84,7 +84,7 @@ const BilletterieNavBar = () => {
               <NavLink to="/" onClick={handleLogout}><img className={styles.icon_nav_sizing} src={userlogout} alt="icon_logout"/>Se déconnecter</NavLink>
             ) : (
               <>
-                <NavLink to="/login"><img className={styles.icon_nav_sizing} src={userConnexion} alt="icon_user"/>Se connecter</NavLink>
+                <NavLink to="/signin"><img className={styles.icon_nav_sizing} src={userConnexion} alt="icon_user"/>Se connecter</NavLink>
                 <NavLink to="/register"><img className={styles.icon_nav_sizing} src={userRegistration} alt="icon_user"/>S{"'"}inscrire</NavLink>
               </>
             )}
