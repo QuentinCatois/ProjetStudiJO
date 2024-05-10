@@ -13,15 +13,11 @@ function App () {
       </div>
 
       <div>
-        <Tickets />  {/* Render the NavBar component */}
+        <Tickets />  {/* Render the OffresTickets component */}
       </div>
 
-
-
-
-
       <div>
-        <Footer />  {/* Render the NavBar component */}
+        <Footer />  {/* Render the Footer component */}
       </div>
 
     </>

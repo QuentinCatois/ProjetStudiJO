@@ -14,3 +14,4 @@ class ticketsAdmin(admin.ModelAdmin):
 admin.site.register(UserAccount, UserAccountAdmin)
 admin.site.register(categories_offres)
 admin.site.register(tickets, ticketsAdmin)
+admin.site.register(Cart)
