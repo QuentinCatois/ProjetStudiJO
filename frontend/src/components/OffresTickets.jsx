@@ -1,6 +1,7 @@
 import styles from "./OffresTickets.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { CountsContext } from '../App'; 
 
 function Tickets() {
 
@@ -36,14 +37,15 @@ function Tickets() {
         (searchVille === "" || ticket.ville.toLowerCase().includes(searchVille))
     ));
 
-    const [counts, setCounts] = useState([]);
+    //const [counts, setCounts] = useState([]);
+    const { counts, setCounts } = useContext(CountsContext);
 
     useEffect(() => {
         // Initialize counts array with zeroes when filteredTickets changes
         if (filteredTickets.length > 0  && counts.length === 0) {
             setCounts(new Array(filteredTickets.length).fill(0));
         }
-    }, [filteredTickets,counts]);
+    }, [filteredTickets,counts, setCounts]);
 
     // Increment counter for a specific index
     const increment = (index, nombre_total_ticket) => {

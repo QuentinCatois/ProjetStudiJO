@@ -14,26 +14,47 @@ import BilletteriePage from './pages/BilletteriePage';
 import CartPage from './pages/Cartpage';
 import Footer from './components/Footer';
 import Welcome from './pages/WelcomePage';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
+
+// Create CountsContext outside of the App function
+export const CountsContext = React.createContext();
+
+// Create CountsProvider outside of the App function
+export const CountsProvider = ({ children }) => {
+  const [counts, setCounts] = useState([]);
+
+  return (
+    <CountsContext.Provider value={{ counts, setCounts }}>
+      {children}
+    </CountsContext.Provider>
+  );
+};
+
+CountsProvider.propTypes = {children: PropTypes.node};
 
 function App() {
+
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage><HomePageNavBar /></HomePage >}/>
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/activate/:uid/:token" element={<ActivatePage />} />
-          <Route path="/signin" element={<LoginPage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
-          <Route path="/password/reset/confirm/:uid/:token" element={<ResetPasswordPageConfirm />} />
-          <Route path="/billetterie" element={<BilletteriePage><BilletteriePageNavBar /><Footer/></BilletteriePage >}/>
-          <Route path="/Welcome" element={<Welcome />} />
-          <Route path="/cart" element={<CartPage/>}/>
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/legalsmentions" element={<LegalsMentions />} />
-        </Routes>
-      </Router>
+      <CountsProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage><HomePageNavBar /></HomePage >}/>
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/activate/:uid/:token" element={<ActivatePage />} />
+            <Route path="/signin" element={<LoginPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/password/reset/confirm/:uid/:token" element={<ResetPasswordPageConfirm />} />
+            <Route path="/billetterie" element={<BilletteriePage><BilletteriePageNavBar /><Footer/></BilletteriePage >}/>
+            <Route path="/Welcome" element={<Welcome />} />
+            <Route path="/cart" element={<CartPage/>}/>
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/legalsmentions" element={<LegalsMentions />} />
+          </Routes>
+        </Router>
+      </CountsProvider>
     </>
   )
 }
