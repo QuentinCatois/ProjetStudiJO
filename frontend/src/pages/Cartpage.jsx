@@ -6,11 +6,11 @@ import {useContext, useEffect } from "react";
 function Cart() {
 
 
-    const { counts, setCounts } = useContext(CountsContext);
+    const { counts, setCounts, ticketsData, setTicketsData  } = useContext(CountsContext);
 
     useEffect(() => {
-        console.log(counts); // Log counts when the component mounts or counts changes
-      }, [counts]);
+        console.log(ticketsData); // Log counts when the component mounts or counts changes
+      }, [ticketsData]);
 
     return (
       <>
@@ -29,7 +29,6 @@ function Cart() {
                     </tr>
                 </thead>
             </table>
-            {/* Here you can add your item adding component */}
 
           </div>
           

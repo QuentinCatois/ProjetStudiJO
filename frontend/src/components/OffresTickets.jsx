@@ -5,24 +5,34 @@ import { CountsContext } from '../App';
 
 function Tickets() {
 
-    const [ticketsData, setTicketsData] = useState([])
     const [searchEvent, setSearchEvent] = useState(""); //To search for specific event
     const [searchVille, setSearchVille] = useState(""); //To search for a specific city
-
-    const endpoint = `http://127.0.0.1:8000/api/tickets/tickets/`
-
-    const fetchData = async () => {
-        const response = await axios.get(endpoint)
-        console.log(response)
-        const { data } = response
-        setTicketsData(data)
-        console.log(data)
-        return data
-    }
+    const [filteredTickets, setFilteredTickets] = useState([]);
+    const { counts, setCounts, ticketsData, setTicketsData  } = useContext(CountsContext);
 
     useEffect(() => {
-        fetchData()
-    }, [])
+        const fetchData = async () => {
+            try {
+                const endpoint = `http://127.0.0.1:8000/api/tickets/tickets/`;
+                const response = await axios.get(endpoint);
+                const { data } = response;
+    
+                const ticketsWithData = data.map(ticket => ({
+                    ...ticket,
+                    counter: 0 // Adding a counter field initialized to 0
+                }));
+                setTicketsData(ticketsWithData);
+                console.log(data);
+                return ticketsWithData;
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                // Handle error if needed
+            }
+        };
+    
+        fetchData(); // Invoke fetchData immediately
+    }, [setTicketsData]);
+
 
     const handleSearchEvent = (event) => {
         setSearchEvent(event.target.value.toLowerCase()); // Update search term for Event
@@ -32,13 +42,13 @@ function Tickets() {
         setSearchVille(event.target.value.toLowerCase()); // Update search term for city
     };
 
-    const filteredTickets = ticketsData.filter((ticket) => (
-        (searchEvent === "" || ticket.name.toLowerCase().includes(searchEvent)) &&
-        (searchVille === "" || ticket.ville.toLowerCase().includes(searchVille))
-    ));
-
-    //const [counts, setCounts] = useState([]);
-    const { counts, setCounts } = useContext(CountsContext);
+    useEffect(() => {
+        const filtered = ticketsData.filter(ticket =>
+          (searchEvent === "" || ticket.name.toLowerCase().includes(searchEvent.toLowerCase())) &&
+          (searchVille === "" || ticket.ville.toLowerCase().includes(searchVille.toLowerCase()))
+        );
+        setFilteredTickets(filtered);
+      }, [searchEvent, searchVille, ticketsData]);
 
     useEffect(() => {
         // Initialize counts array with zeroes when filteredTickets changes
@@ -47,26 +57,39 @@ function Tickets() {
         }
     }, [filteredTickets,counts, setCounts]);
 
-    // Increment counter for a specific index
-    const increment = (index, nombre_total_ticket) => {
-        const newCounts = [...counts];
-        if (newCounts[index] +1 > nombre_total_ticket) {
-            return
+    const increment = (ticket) => {
+        if (ticket.counter + 1 > ticket.nombre_total_ticket) {
+          return;
         }
-        newCounts[index] += 1;
-        setCounts(newCounts);
-    };
+        
+        const updatedTickets = ticketsData.map(t => {
+          if (t.id === ticket.id) {
+            return {
+              ...t,
+              counter: t.counter + 1
+            };
+          }
+          return t;
+        });
+      
+        setTicketsData(updatedTickets);
+      };
 
     // Decrement counter for a specific index
-    const decrement = (index) => {
-        if (counts[index] > 0) {
-            const newCounts = [...counts];
-            newCounts[index] -= 1;
-            setCounts(newCounts);
-        }
+    const decrement = (ticket) => {
+        console.log(ticket)
+        if (ticket.counter > 0) {
+        const updatedTickets = ticketsData.map(t => {
+            if (t.id === ticket.id) {
+              return {
+                ...t,
+                counter: t.counter - 1
+              };
+            }
+            return t;
+          });
+          setTicketsData(updatedTickets);}
     };
-
-
 
     return (
 
@@ -111,9 +134,9 @@ function Tickets() {
                         <p className={styles.item_6}>{ticket.tickets_prix}</p>
 
                         <div className={styles.item_7}>
-                            <button className={styles.rounding_button} onClick={() => decrement(index)}> - </button>
-                            <p>{counts[index]}</p>
-                            <button className={styles.rounding_button} onClick={() => increment(index, ticket.nombre_total_tickets)}> + </button>
+                            <button className={styles.rounding_button} onClick={() => decrement(ticket)}> - </button>
+                            <p>{ticket.counter}</p>
+                            <button className={styles.rounding_button} onClick={() => increment(ticket)}> + </button>
                         </div>
 
                         <p className={styles.item_8}>Total :</p>

@@ -12,7 +12,8 @@ class TicketsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = tickets #model to serialize
-        fields = ['name',
+        fields = ['id',
+                  'name',
                   'ville',
                   'categories_id',
                   'date',

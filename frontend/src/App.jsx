@@ -24,15 +24,20 @@ export const CountsContext = React.createContext();
 // Create CountsProvider outside of the App function
 export const CountsProvider = ({ children }) => {
   const [counts, setCounts] = useState([]);
+  const [ ticketsData, setTicketsData ] = useState([]);
 
   return (
-    <CountsContext.Provider value={{ counts, setCounts }}>
+    <CountsContext.Provider value={{ counts, setCounts, ticketsData, setTicketsData}}>
       {children}
     </CountsContext.Provider>
   );
 };
 
 CountsProvider.propTypes = {children: PropTypes.node};
+
+
+
+
 
 function App() {
 
