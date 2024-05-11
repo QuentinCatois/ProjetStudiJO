@@ -12,6 +12,8 @@ function Tickets() {
 
     useEffect(() => {
         const fetchData = async () => {
+            console.log(ticketsData)
+            if (ticketsData.length === 0) {
             try {
                 const endpoint = `http://127.0.0.1:8000/api/tickets/tickets/`;
                 const response = await axios.get(endpoint);
@@ -27,11 +29,11 @@ function Tickets() {
             } catch (error) {
                 console.error("Error fetching data:", error);
                 // Handle error if needed
-            }
+            }}
         };
     
         fetchData(); // Invoke fetchData immediately
-    }, [setTicketsData]);
+    }, [setTicketsData, ticketsData]);
 
 
     const handleSearchEvent = (event) => {
@@ -140,7 +142,7 @@ function Tickets() {
                         </div>
 
                         <p className={styles.item_8}>Total :</p>
-                        <p className={styles.item_9}>{(counts[index] * ticket.tickets_prix).toFixed(2)}</p>
+                        <p className={styles.item_9}>{(ticket.counter * ticket.tickets_prix).toFixed(2)}</p>
                         <button className={styles.item_10}> Ajouter au panier</button>
                     </div>
                 )
