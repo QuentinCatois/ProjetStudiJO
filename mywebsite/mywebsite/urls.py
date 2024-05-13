@@ -20,7 +20,7 @@ from rest_framework.routers import DefaultRouter
 from app.api.urls import tickets_router
 from django.conf import settings
 from django.views.static import serve
-
+from app import views
 
 router = DefaultRouter()
 router.registry.extend(tickets_router.registry)
@@ -31,4 +31,5 @@ urlpatterns = [
     path('api/auth/', include('djoser.urls.jwt')), #Maps the URL /api/auth to Djoser's JWT (JSON Web Token) authentication URLs. Djoser JWT provides endpoints for token-based authentication, including token issuance and refreshing.
     path('api/tickets/', include(router.urls)),
     path('logo_tickets/<path:path>', serve, {'document_root': settings.LOGO_TICKETS_ROOT}),
+    path('api/update_cart/', views.update_cart, name='add_to_cart'),
 ] 

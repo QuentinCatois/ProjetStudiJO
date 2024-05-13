@@ -59,15 +59,22 @@ class tickets(models.Model):
     def __str__(self):
         return self.name
 
-
-User = get_user_model()
-
-class Cart(models.Model):
+'''class Cart(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     title = models.CharField(max_length=200)
+    category=models.CharField(max_length=20)
     price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     quantity = models.IntegerField(default=1)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return self.title
+        return str(self.id)
+    
+    def total_price(self):
+        return self.price * self.quantity'''
+    
+class Cart(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+    items = models.JSONField()  # Field to store the list of cart items as JSON
+
+    def __str__(self):
+        return str(self.id)
