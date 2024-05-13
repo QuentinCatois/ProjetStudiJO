@@ -43,6 +43,8 @@ function Cart() {
             axios.post(apiUrl, cartData)
                 .then(response => {
                     console.log('Cart item added:', response.data);
+                    //const cartId = response.data.cart_id; // Extracting cart_id from JSON response
+                    //const userId = "";
                 })
                 .catch(error => {
                     console.error('Error adding item to cart:', error);
@@ -50,7 +52,26 @@ function Cart() {
         } catch (error) {
             console.error('Error adding item to cart:', error);
         }
-    };  
+        //To create an instance of OrderBeforConfirmation model & create the Stripe checkout session to get Stripe url for payment.
+        //If axios request successful, django app will return a url
+        //In React app, we will move to that url. The url generated is the default stripe checout page.
+        /*.then(()=>
+        axios.post("http://localhost:8000/checkout/create-checkout-session",
+          {
+            cart: cartId,
+            buyer: userId
+          },
+        )
+        .then((res) => {
+          window.open(res.data.url, "_self");
+        })
+        .catch((e) => {
+          console.log("error", e);
+        }));*/
+
+
+
+      };  
 
     return (
       <>

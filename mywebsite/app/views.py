@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Cart
 import json
 
+#View to update the cart database after user checkout cart.
 @csrf_exempt  # Disable CSRF protection
 def update_cart(request):
     if request.method == 'POST':
@@ -33,10 +34,13 @@ def update_cart(request):
             # Save all cart items to the database as one cart entry
             cart_item = Cart.objects.create(items=cart_items_list)
 
-            return JsonResponse({'success': True, 'message': 'Cart updated successfully'})
+            return JsonResponse({'success': True, 'message': 'Cart updated successfully', 'cart_id': str(cart_item.id)}) #return the cart_id in the response JSON for Stripe
         
         except Exception as e:
             return JsonResponse({'success': False, 'error': str(e)}, status=400)
     
     else:
         return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+
+
+

@@ -59,7 +59,9 @@ class tickets(models.Model):
     def __str__(self):
         return self.name
 
-'''class Cart(models.Model):
+'''Old models version of Cart:
+
+    class Cart(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     title = models.CharField(max_length=200)
     category=models.CharField(max_length=20)
@@ -75,6 +77,40 @@ class tickets(models.Model):
 class Cart(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     items = models.JSONField()  # Field to store the list of cart items as JSON
+
+    def __str__(self):
+        return str(self.id)
+
+User = get_user_model()
+
+'''This model will create a new instance as soon as a payment request comes from React side 
+and then to create the stripe payment session. This can be used later to verify in our database whether a user started a payment flow or not,
+ in case if something happens in between payment process.'''
+
+class OrderBeforConfirmation(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    buyer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.id)
+
+'''This model is to create an instance as soon as we recieve a success notification in our React app from stripe. 
+This will be helful to check if a payment was successfull or not. This can be considered as - the payment is success but we have not recieved a webhook notification.'''
+
+class OrderAfterConfirmation(models.Model):
+    order = models.OneToOneField(OrderBeforConfirmation, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.id)
+
+'''This model is to create new instances when we recieve a Webhook notification of our successfull payment process. 
+After this we can give users permission to the app, this means the payment is successfull, the purchase process successfully finished.'''
+
+class OrderAfterWebhooksConfirmation(models.Model):
+    order = models.OneToOneField(OrderBeforConfirmation, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.id)
