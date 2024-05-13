@@ -1,14 +1,17 @@
 import styles from "./CartPage.module.scss"
-import { Link} from "react-router-dom"
+import { Link, useNavigate} from "react-router-dom"
 import { CountsContext } from '../App'; 
 import {useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector } from 'react-redux';
 
 function Cart() {
     const { counts, setCounts, ticketsData, setTicketsData  } = useContext(CountsContext);
     const [filteredTickets, setFilteredTickets] = useState([]);
     const [sum, setSum] = useState(0.0);
-
+    const navigate = useNavigate();
+    const { user } = useSelector((state) => state.auth);
+    const isAuthenticated = !!user;
 
     useEffect(() => {
         console.log(ticketsData); // Log counts when the component mounts or counts changes
@@ -29,6 +32,12 @@ function Cart() {
     }, [ticketsData,sum]);
 
       const handleCartModel = () => {
+
+        if (!isAuthenticated) {
+        navigate("/register")
+        return        
+        }        
+
         const apiUrl = "http://127.0.0.1:8000/api/update_cart/";
         const cartData = {
             tickets: filteredTickets.map(ticket => ({
@@ -43,6 +52,7 @@ function Cart() {
             axios.post(apiUrl, cartData)
                 .then(response => {
                     console.log('Cart item added:', response.data);
+
                     //const cartId = response.data.cart_id; // Extracting cart_id from JSON response
                     //const userId = "";
                 })
@@ -52,7 +62,8 @@ function Cart() {
         } catch (error) {
             console.error('Error adding item to cart:', error);
         }
-        //To create an instance of OrderBeforConfirmation model & create the Stripe checkout session to get Stripe url for payment.
+        
+        /*//To create an instance of OrderBeforConfirmation model & create the Stripe checkout session to get Stripe url for payment.
         //If axios request successful, django app will return a url
         //In React app, we will move to that url. The url generated is the default stripe checout page.
         /*.then(()=>
@@ -68,8 +79,6 @@ function Cart() {
         .catch((e) => {
           console.log("error", e);
         }));*/
-
-
 
       };  
 

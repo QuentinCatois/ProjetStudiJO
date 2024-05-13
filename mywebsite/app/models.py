@@ -73,15 +73,18 @@ class tickets(models.Model):
     
     def total_price(self):
         return self.price * self.quantity'''
-    
+
+User = get_user_model()
+
 class Cart(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     items = models.JSONField()  # Field to store the list of cart items as JSON
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
 
-User = get_user_model()
+
 
 '''This model will create a new instance as soon as a payment request comes from React side 
 and then to create the stripe payment session. This can be used later to verify in our database whether a user started a payment flow or not,
