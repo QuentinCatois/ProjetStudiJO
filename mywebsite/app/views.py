@@ -3,6 +3,10 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Cart
 import json
 from django.contrib.auth import get_user_model  # Import the get_user_model function
+from django.core.mail import send_mail
+import qrcode
+from io import BytesIO
+from django.core.mail import EmailMessage
 
 # Get the User model
 User = get_user_model()
@@ -52,7 +56,64 @@ def update_cart(request):
     else:
         return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
 
+def generate_qr_code(data):
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
 
+    img = qr.make_image(fill_color="black", back_color="white")
+    return img
+
+def send_email_with_qr_code(subject, message, from_email, recipient_list, data):
+    img = generate_qr_code(data)
+    
+    # Save the image to a BytesIO object
+    img_io = BytesIO()
+    img.save(img_io, format='PNG')
+    img_io.seek(0)
+    
+    # Create an email with an attachment
+    email = EmailMessage(
+        subject,
+        message,
+        from_email,
+        recipient_list,
+    )
+    email.attach('qrcode.png', img_io.getvalue(), 'image/png')
+    email.send(fail_silently=False)
+
+@csrf_exempt  # Disable CSRF protection
+def send_email(request):
+    if request.method == 'POST':
+        print("!!!!!!!!!!!!!!!!!1");
+        print(request)
+        print("!!!!!!!!!!!!!!!!!2");
+        send_mail(
+        'Test Email Subject',
+        'This is a test email message From Pumukli',
+        'from@example.com',  # From email
+        ['to@example.com'],  # To email
+        fail_silently=False,
+        )
+
+
+        subject = 'Test Email Subject2'
+        message = 'This is a test email message From Pumukli2'
+        from_email = 'from2@example.com'
+        recipient_list = ['to2@example.com']
+        data = 'pumukli2'
+        send_email_with_qr_code(subject, message, from_email, recipient_list, data)
+        
+        return JsonResponse({'success': True, 'message': 'Email sent successfully'})
+    else:
+        return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+    #return redirect(checkout_session.url, code=303)
+        
 
 
 YOUR_DOMAIN = 'http://localhost:5173/'
@@ -60,6 +121,7 @@ YOUR_DOMAIN = 'http://localhost:5173/'
 def stripe_checkout_view(request):
     if request.method == 'POST':
         print("=================");
+
         print(stripe.api_key)
         try:
              # Create a product
@@ -75,8 +137,8 @@ def stripe_checkout_view(request):
                 currency='usd',
             )
 
-            successpath  = f'http://{env("DOMAIN")}/success/'
-            cancelpath = f'http://{env("DOMAIN")}/cancel/'
+            successpath  = f'http://{env("DOMAIN")}/success/?priceid={price.id}'
+            cancelpath = f'http://{env("DOMAIN")}/cancel/?priceid={price.id}'
             checkout_session = stripe.checkout.Session.create(
                 line_items=[
                     {

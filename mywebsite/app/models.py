@@ -83,3 +83,5 @@ class Cart(models.Model):
 
     def __str__(self):
         return f"Cart ID: {self.id}, User ID: {self.user_id}"
+    
+

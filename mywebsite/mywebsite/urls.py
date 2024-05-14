@@ -22,8 +22,8 @@ from django.conf import settings
 from django.views.static import serve
 from app import views
 from app.views import get_customer_id
-from app.views import StripeCheckoutView
 from app.views import stripe_checkout_view
+from app.views import send_email
 
 router = DefaultRouter()
 router.registry.extend(tickets_router.registry)
@@ -36,8 +36,6 @@ urlpatterns = [
     path('logo_tickets/<path:path>', serve, {'document_root': settings.LOGO_TICKETS_ROOT}),
     path('api/update_cart/', views.update_cart, name='add_to_cart'),
     path('get_customer_id/', get_customer_id, name='get_customer_id'),
-    #path('api/create_checkout_session/', StripeCheckoutView.as_view(), name='create_checkout_session'),
     path('api/create_checkout_session/',  views.stripe_checkout_view, name='create_checkout_session'),
-    path('success/', views.payment_success, name='payment_success'),
-    path('cancel/', views.payment_cancel, name='payment_cancel'),
+    path('api/send_email/',  views.send_email, name='send_email'),
 ] 
