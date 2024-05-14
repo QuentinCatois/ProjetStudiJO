@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "http://localhost:5173",
+    "https://checkout.stripe.com",
 ]
 
 # Application definition
@@ -193,6 +194,9 @@ DEFAULT_FROM_EMAIL = "info@jo-de-paris.com"
 DOMAIN = env("DOMAIN")
 SITE_NAME = "Jeux Olympiques France"
 
-STRIPE_PUBLIC_KEY = 'pk_test_51PFI84FTGYMgqNTvUNo9bC0Yrld6GQNJj4di23m26AowkxqUGrmNFFb28GTvNiN3hNcOFMIWEUwsDRkZ7svotCeR00ozFnowQf',
-STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY"),
+
+STRIPE_PUBLIC_KEY = 'pk_test_51PFI84FTGYMgqNTvUNo9bC0Yrld6GQNJj4di23m26AowkxqUGrmNFFb28GTvNiN3hNcOFMIWEUwsDRkZ7svotCeR00ozFnowQf'
+STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
+#STRIPE_SECRET_KEY = 'pumukli1'
+#STRIPE_PUBLIC_KEY = 'pumukli2'
 STRIPE_WEBHOOK_KEY = ""

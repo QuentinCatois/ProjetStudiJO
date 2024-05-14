@@ -79,6 +79,7 @@ User = get_user_model()
 class Cart(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     items = models.JSONField()  # Field to store the list of cart items as JSON
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return str(self.id)
+        return f"Cart ID: {self.id}, User ID: {self.user_id}"

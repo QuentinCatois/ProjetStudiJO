@@ -16,6 +16,8 @@ import Footer from './components/Footer';
 import Welcome from './pages/WelcomePage';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import PaymentSuccessfull from "./pages/StripePaymentSuccess";
+import PaymentCancelled from "./pages/StripePaymentCancelled";
 
 
 // Create CountsContext outside of the App function
@@ -57,6 +59,8 @@ function App() {
             <Route path="/cart" element={<CartPage/>}/>
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/legalsmentions" element={<LegalsMentions />} />
+            <Route path="/success" element={<PaymentSuccessfull />} />
+            <Route path="/cancel" element={<PaymentCancelled />} />
           </Routes>
         </Router>
       </CountsProvider>
