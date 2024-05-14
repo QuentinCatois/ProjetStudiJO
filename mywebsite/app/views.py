@@ -48,3 +48,57 @@ def update_cart(request):
         return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
 
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_customer_id(request):
+    customer_id = request.user.id
+    return Response({'customer_id': customer_id})
+
+
+
+#Stripe implementation
+
+#! /usr/bin/env python3.6
+
+"""
+server.py
+Stripe Sample.
+Python 3.6 or newer required.
+"""
+'''
+import stripe
+from django.conf import settings
+from rest_framework.views import APIView
+
+# Test secret API key.
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+#YOUR_DOMAIN = 'http://localhost:4242'
+
+#below code will create Stripe checkout session
+class StripeCheckoutView(APIView):
+    def post(self, request):
+        try:
+            checkout_session = stripe.checkout.Session.create(
+                line_items=[
+                    {
+                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                        'price': '{{PRICE_ID}}',
+                        'quantity': 1,
+                    },
+                ],
+                mode='payment',
+                success_url=YOUR_DOMAIN + '?success=true',
+                cancel_url=YOUR_DOMAIN + '?canceled=true',
+            )
+        except Exception as e:
+            return str(e)
+
+        return redirect(checkout_session.url, code=303)
+
+#if __name__ == '__main__':
+#   app.run(port=4242)'''

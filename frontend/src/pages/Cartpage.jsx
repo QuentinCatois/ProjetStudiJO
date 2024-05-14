@@ -1,86 +1,80 @@
-import styles from "./CartPage.module.scss"
-import { Link, useNavigate} from "react-router-dom"
-import { CountsContext } from '../App'; 
-import {useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./CartPage.module.scss";
+import { CountsContext } from '../App'; 
+import { getUserInfo } from '../features/auth/authSlice';
 
 function Cart() {
-    const { counts, setCounts, ticketsData, setTicketsData  } = useContext(CountsContext);
+    const { counts, setCounts, ticketsData, setTicketsData } = useContext(CountsContext);
     const [filteredTickets, setFilteredTickets] = useState([]);
     const [sum, setSum] = useState(0.0);
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
     const isAuthenticated = !!user;
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(ticketsData); // Log counts when the component mounts or counts changes
+        console.log(ticketsData);
     }, [ticketsData]);
 
     useEffect(() => {
-      var collector = 0
-      ticketsData.forEach(ticket => {
-        var price = (ticket.tickets_prix * ticket.counter)
-        collector = collector + price
-        setSum(collector )
-      });
+        var collector = 0
+        ticketsData.forEach(ticket => {
+            var price = (ticket.tickets_prix * ticket.counter)
+            collector = collector + price
+            setSum(collector)
+        });
 
-      const filtered = ticketsData.filter(ticket =>
-            ticket.counter > 0
-      );
-      setFilteredTickets(filtered);
-    }, [ticketsData,sum]);
+        const filtered = ticketsData.filter(ticket => ticket.counter > 0);
+        setFilteredTickets(filtered);
+    }, [ticketsData, sum]);
 
-      const handleCartModel = () => {
-
+    //To check if user is authenticated, to be able to continue checkout payment. Otherwise redirect to register page.
+    const handleCartModel = () => {
         if (!isAuthenticated) {
-        navigate("/register")
-        return        
-        }        
-
-        const apiUrl = "http://127.0.0.1:8000/api/update_cart/";
-        const cartData = {
-            tickets: filteredTickets.map(ticket => ({
-                title: ticket.name,
-                category: ticket.categories_id.categories,
-                price: ticket.tickets_prix,
-                quantity: ticket.counter
-            })),
-        };
-    
-        try {
-            axios.post(apiUrl, cartData)
-                .then(response => {
-                    console.log('Cart item added:', response.data);
-
-                    //const cartId = response.data.cart_id; // Extracting cart_id from JSON response
-                    //const userId = "";
-                })
-                .catch(error => {
-                    console.error('Error adding item to cart:', error);
-                });
-        } catch (error) {
-            console.error('Error adding item to cart:', error);
+            navigate("/register");
+            return;
         }
-        
-        /*//To create an instance of OrderBeforConfirmation model & create the Stripe checkout session to get Stripe url for payment.
-        //If axios request successful, django app will return a url
-        //In React app, we will move to that url. The url generated is the default stripe checout page.
-        /*.then(()=>
-        axios.post("http://localhost:8000/checkout/create-checkout-session",
-          {
-            cart: cartId,
-            buyer: userId
-          },
-        )
-        .then((res) => {
-          window.open(res.data.url, "_self");
-        })
-        .catch((e) => {
-          console.log("error", e);
-        }));*/
 
-      };  
+        // Fetch user info from Redux store
+        dispatch(getUserInfo())
+            .then((response) => {
+                // Handle successful retrieval of user info
+                const userData = response.payload;
+                console.log(userData); // User data retrieved successfully
+
+                // Cart operation, including sending the user data to the backend
+                const apiUrl = "http://127.0.0.1:8000/api/update_cart/";
+                const cartData = {
+                    user: userData,
+                    tickets: filteredTickets.map(ticket => ({
+                        title: ticket.name,
+                        category: ticket.categories_id.categories,
+                        price: ticket.tickets_prix,
+                        quantity: ticket.counter
+                    })),
+                };
+
+                try {
+                    axios.post(apiUrl, cartData)
+                        .then(response => {
+                            console.log('Cart item added:', response.data);
+                        })
+                        .catch(error => {
+                            console.error('Error adding item to cart:', error);
+                        });
+                } catch (error) {
+                    console.error('Error adding item to cart:', error);
+                }
+            })
+            .catch((error) => {
+                // Handle error if user info retrieval fails
+                console.error('Error retrieving user info:', error);
+            });
+    };
+
 
     return (
       <>

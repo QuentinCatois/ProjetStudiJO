@@ -21,6 +21,7 @@ from app.api.urls import tickets_router
 from django.conf import settings
 from django.views.static import serve
 from app import views
+from app.views import get_customer_id
 
 router = DefaultRouter()
 router.registry.extend(tickets_router.registry)
@@ -32,4 +33,5 @@ urlpatterns = [
     path('api/tickets/', include(router.urls)),
     path('logo_tickets/<path:path>', serve, {'document_root': settings.LOGO_TICKETS_ROOT}),
     path('api/update_cart/', views.update_cart, name='add_to_cart'),
+    path('get_customer_id/', get_customer_id, name='get_customer_id'),
 ] 
