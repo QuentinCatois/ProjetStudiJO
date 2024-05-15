@@ -99,7 +99,7 @@ function Tickets() {
             <div>
                 <input
                     type="text"
-                    placeholder="Rechercher d'un événement"
+                    placeholder="Rechercher un événement"
                     className={styles.search_field}
                     value={searchEvent}
                     onChange={handleSearchEvent} // Update search event on input change

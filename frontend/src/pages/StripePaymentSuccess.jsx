@@ -5,8 +5,10 @@ import { useLocation } from 'react-router-dom';
 import { getUserInfo } from '../features/auth/authSlice';
 import {  useDispatch } from 'react-redux';
 import axios from "axios";
+import styles from "./StripePaymentSuccess.module.scss"
 
 const PaymentSuccessfull = () => {
+ 
     const location = useLocation();
     const dispatch = useDispatch();
 
@@ -18,6 +20,8 @@ const PaymentSuccessfull = () => {
     const priceId = getQueryParam('priceid');
     console.log('Price ID:', priceId);
     
+
+
     useEffect(() => {
         // Fetch user info from Redux store
         dispatch(getUserInfo())
@@ -69,18 +73,18 @@ const PaymentSuccessfull = () => {
  
 
     return (
-        <div>
+        <div className={styles.Addingmarge}>
             <h2>Paiement réussi{" "}!</h2>
 
             <h3>Cher(e) Madame, Monsieur,</h3>
-
-            <p>Nous avons le plaisir de vous informer que votre paiement a été reçu avec succès.<br />
-                Un email de confirmation vient de vous être envoyé, contenant tous les détails de votre achat ainsi qu{"'"}un QR code en pièce jointe.<br />
+            <br /><br />
+            <p>Nous avons le plaisir de vous informer que votre paiement a été reçu avec succès.<br /><br />
+                Un email de confirmation vient de vous être envoyé, contenant tous les détails de votre achat ainsi qu{"'"}un QR code en pièce jointe.<br /><br />
                 Ce QR code est indispensable pour accéder à l{"'"}événement.<br /><br />
                 Merci de bien vouloir le présenter à l{"'"}entrée.<br />
                 Si vous avez des questions ou des préoccupations, n{"'"}hésitez pas à nous contacter.<br /><br />
-                Nous vous remercions pour votre confiance et nous réjouissons de vous accueillir à notre événement.<br />
-                Cordialement,<br />
+                Nous vous remercions pour votre confiance et nous réjouissons de vous accueillir à notre événement.<br /><br />
+                Cordialement,<br /><br />
                 L{"'"}Équipe des Jeux Olympiques de Paris 2024</p>
 
         </div>

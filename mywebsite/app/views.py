@@ -112,7 +112,7 @@ def send_email(request):
         payment_id = last_payment.id
 
         subject = 'Confirmation de votre achat de billets pour les Jeux Olympiques de Paris 2024'
-        message = ("Cher(e) Maddame, Monsieur, \n" 
+        message = ("Cher(e) Maddame, Monsieur, \n" "\n"
                    "Nous vous remercions pour votre achat de tickets pour les Jeux Olympiques de Paris 2024. \n" 
                    "Nous sommes ravis de vous compter parmi nos spectateurs pour cet événement exceptionnel.\n""\n"
                    "Veuillez trouver en pièce jointe le QR code de vos tickets.Ce QR code est indispensable pour accéder à l'événement.\n" 
@@ -146,14 +146,14 @@ YOUR_DOMAIN = 'http://localhost:5173/'
 @csrf_exempt  # Disable CSRF protection
 def stripe_checkout_view(request):
     if request.method == 'POST':
-        print("=================");
 
         print(stripe.api_key)
+        
         try:
              # Create a product
             product = stripe.Product.create(
-                name="My Dynamic Product",
-                description="A description for my dynamic product",
+                name="Mon panier",
+                description="A description for my dynamic cart",
             )
 
             # Create a price for the product

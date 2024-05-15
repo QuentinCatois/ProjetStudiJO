@@ -59,21 +59,6 @@ class tickets(models.Model):
     def __str__(self):
         return self.name
 
-'''Old models version of Cart:
-
-    class Cart(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
-    title = models.CharField(max_length=200)
-    category=models.CharField(max_length=20)
-    price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
-    quantity = models.IntegerField(default=1)
-
-    def __str__(self):
-        return str(self.id)
-    
-    def total_price(self):
-        return self.price * self.quantity'''
-
 User = get_user_model()
 
 class Cart(models.Model):
