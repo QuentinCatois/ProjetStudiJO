@@ -32,7 +32,11 @@ class CartAdmin(admin.ModelAdmin):
     
     total_price.short_description = 'Total Price'  # Set the column header for total_price method
 
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'price_id', 'user_id')
+
 admin.site.register(UserAccount, UserAccountAdmin)
 admin.site.register(categories_offres)
 admin.site.register(tickets, ticketsAdmin)
 admin.site.register(Cart, CartAdmin)
+admin.site.register(Payment, PaymentAdmin)

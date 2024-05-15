@@ -3,6 +3,9 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Cart
 import json
 from django.contrib.auth import get_user_model  # Import the get_user_model function
+import stripe
+from django.conf import settings
+import environ
 from django.core.mail import send_mail
 import qrcode
 from io import BytesIO
@@ -56,6 +59,8 @@ def update_cart(request):
     else:
         return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
 
+
+#generating a QRcode for the email
 def generate_qr_code(data):
     qr = qrcode.QRCode(
         version=1,
@@ -69,6 +74,8 @@ def generate_qr_code(data):
     img = qr.make_image(fill_color="black", back_color="white")
     return img
 
+
+#generating an email for sending QRcode after payment confirmation via Stripe
 def send_email_with_qr_code(subject, message, from_email, recipient_list, data):
     img = generate_qr_code(data)
     
@@ -87,23 +94,25 @@ def send_email_with_qr_code(subject, message, from_email, recipient_list, data):
     email.attach('qrcode.png', img_io.getvalue(), 'image/png')
     email.send(fail_silently=False)
 
+
+#Set up for sending email
 @csrf_exempt  # Disable CSRF protection
 def send_email(request):
     if request.method == 'POST':
-        print("!!!!!!!!!!!!!!!!!1");
-        print(request)
-        print("!!!!!!!!!!!!!!!!!2");
-        send_mail(
-        'Test Email Subject',
-        'This is a test email message From Pumukli',
-        'from@example.com',  # From email
-        ['to@example.com'],  # To email
-        fail_silently=False,
-        )
-
-
-        subject = 'Test Email Subject2'
-        message = 'This is a test email message From Pumukli2'
+        subject = 'Confirmation de votre achat de billets pour les Jeux Olympiques de Paris 2024'
+        message = ("Cher(e) Maddame, Monsieur, \n" 
+                   "Nous vous remercions pour votre achat de tickets pour les Jeux Olympiques de Paris 2024. \n" 
+                   "Nous sommes ravis de vous compter parmi nos spectateurs pour cet événement exceptionnel.\n""\n"
+                   "Veuillez trouver en pièce jointe le QR code de vos tickets.Ce QR code est indispensable pour accéder à l'événement.\n" 
+                   "Nous vous prions de bien vouloir le présenter à l'entrée le jour de l'événement.\n""\n"
+                   "Important :\n"
+                    "Assurez-vous d'imprimer le QR code ou de le sauvegarder sur votre appareil mobile.\n"
+                    "Présentez le QR code à l'entrée pour accéder à l'événement.\n"
+                    "Gardez une pièce d'identité avec vous pour toute vérification éventuelle.\n""\n"
+                    "Si vous avez des questions ou besoin d'assistance supplémentaire, n'hésitez pas à nous contacter.\n"
+                    "Nous vous remercions encore pour votre achat et avons hâte de vous accueillir aux Jeux Olympiques de Paris 2024 !\n""\n"
+                    "Cordialement,\n"
+                    "L'Équipe des Jeux Olympiques de Paris 2024")
         from_email = 'from2@example.com'
         recipient_list = ['to2@example.com']
         data = 'pumukli2'
@@ -115,6 +124,11 @@ def send_email(request):
     #return redirect(checkout_session.url, code=303)
         
 
+#Stripe implementation to make a payment test mode
+
+env = environ.Env()
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 YOUR_DOMAIN = 'http://localhost:5173/'
 @csrf_exempt  # Disable CSRF protection
@@ -183,105 +197,20 @@ def get_customer_id(request):
     customer_id = request.user.id
     return Response({'customer_id': customer_id})
 
+#view to add payment details to model Django after succesful payment confirmation from Stripe.
 
-#Stripe implementation
+from django.shortcuts import get_object_or_404
+from rest_framework import status
+from .models import Payment, UserAccount
 
-#! /usr/bin/env python3.6
+@api_view(['POST'])
+def add_payment(request):
+    user_id = request.data.get('user_id')
+    price_id = request.data.get('price_id')
 
-"""
-server.py
-Stripe Sample.
-Python 3.6 or newer required.
-"""
-'''
-import stripe
-from django.conf import settings
-from rest_framework.views import APIView
+    user = get_object_or_404(UserAccount, id=user_id)
 
-# Test secret API key.
-stripe.api_key = settings.STRIPE_SECRET_KEY
+    payment = Payment.objects.create(user=user, price_id=price_id)
+    payment.save()
 
-#YOUR_DOMAIN = 'http://localhost:4242'
-
-#below code will create Stripe checkout session
-class StripeCheckoutView(APIView):
-    def post(self, request):
-        try:
-            checkout_session = stripe.checkout.Session.create(
-                line_items=[
-                    {
-                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                        'price': '{{PRICE_ID}}',
-                        'quantity': 1,
-                    },
-                ],
-                mode='payment',
-                success_url=YOUR_DOMAIN + '?success=true',
-                cancel_url=YOUR_DOMAIN + '?canceled=true',
-            )
-        except Exception as e:
-            return str(e)
-
-        return redirect(checkout_session.url, code=303)
-
-#if __name__ == '__main__':
-#   app.run(port=4242)'''
-
-
-import stripe
-from django.conf import settings
-from rest_framework.views import APIView
-from django.shortcuts import redirect
-from .models import Cart
-from django.conf import settings
-import environ
-
-env = environ.Env()
-
-stripe.api_key = settings.STRIPE_SECRET_KEY
-
-
-class StripeCheckoutView(APIView):
-    def post(self, request):
-        try:
-            # Fetch the current user's cart
-            cart = Cart.objects.get(user=request.user)
-            print("adsasdadsadadsadsdasadsadsadsadsadsdasads")
-            # Construct line items based on cart items
-            line_items = []
-            for item in cart.items:
-                line_items.append({
-                    'price_data': {
-                        'currency': 'eur',
-                        'unit_amount': int(item['price'] * 100),
-                        'product_data': {
-                            'name': item['title'],
-                        },
-                    },
-                    'quantity': item['quantity'],
-                })
-
-            # Calculate total amount from cart items
-            total_amount = sum(item['price'] * item['quantity'] for item in cart.items)
-
-            # Create a Checkout session with calculated line items and total amount
-            checkout_session = stripe.checkout.Session.create(
-                payment_method_types=['card'],
-                line_items=line_items,
-                mode='payment',
-                success_url=f'http://{env("DOMAIN")}/success/',#success_url
-                cancel_url=f'http://{env("DOMAIN")}/cancel/',#cancel_url
-            )
-        except Exception as e:
-            return str(e)
-
-        return JsonResponse({'url': checkout_session.url})
-
-#set up of the view for the successfull & cancellation of Stripe payment
-from django.shortcuts import render
-
-def payment_success(request):
-    return render(request, 'payment_success')
-
-def payment_cancel(request):
-    return render(request, 'payment_cancel')
+    return JsonResponse({'message': 'Payment added successfully'}, status=status.HTTP_201_CREATED)

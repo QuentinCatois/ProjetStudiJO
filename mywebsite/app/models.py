@@ -83,5 +83,13 @@ class Cart(models.Model):
 
     def __str__(self):
         return f"Cart ID: {self.id}, User ID: {self.user_id}"
-    
 
+#Model to save Price id & user after successful Stripe payment   
+class Payment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    price_id = models.CharField(max_length=100)
+    user = models.ForeignKey('UserAccount', on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.id} - {self.price_id}"

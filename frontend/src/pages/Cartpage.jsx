@@ -124,18 +124,6 @@ function Cart() {
             // Handle error if user info retrieval fails
             console.error('Error retrieving user info:', error);
         });
-/*
-        //React endpoint Django to start Stripe payment test mode   
-        axios.post("http://127.0.0.1:8000/api/create_checkout_session/", {})
-          .then(response => {
-            console.log('Stripe checkout session created:', response.data);
-            // Redirect to Stripe checkout page
-            window.location.href = response.data.url;
-          })
-          .catch(error => {
-            console.error('Error creating Stripe checkout session:', error);
-            // Handle error
-        });*/
         
     };
 

@@ -24,6 +24,7 @@ from app import views
 from app.views import get_customer_id
 from app.views import stripe_checkout_view
 from app.views import send_email
+from app.views import add_payment
 
 router = DefaultRouter()
 router.registry.extend(tickets_router.registry)
@@ -38,4 +39,5 @@ urlpatterns = [
     path('get_customer_id/', get_customer_id, name='get_customer_id'),
     path('api/create_checkout_session/',  views.stripe_checkout_view, name='create_checkout_session'),
     path('api/send_email/',  views.send_email, name='send_email'),
+    path('api/add_payment/', views.add_payment, name='add_payment'),
 ] 
