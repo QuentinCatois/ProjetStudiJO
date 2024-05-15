@@ -71,6 +71,18 @@ const PaymentSuccessfull = () => {
     return (
         <div>
             <h2>Paiement réussi{" "}!</h2>
+
+            <h3>Cher(e) Madame, Monsieur,</h3>
+
+            <p>Nous avons le plaisir de vous informer que votre paiement a été reçu avec succès.<br />
+                Un email de confirmation vient de vous être envoyé, contenant tous les détails de votre achat ainsi qu{"'"}un QR code en pièce jointe.<br />
+                Ce QR code est indispensable pour accéder à l{"'"}événement.<br /><br />
+                Merci de bien vouloir le présenter à l{"'"}entrée.<br />
+                Si vous avez des questions ou des préoccupations, n{"'"}hésitez pas à nous contacter.<br /><br />
+                Nous vous remercions pour votre confiance et nous réjouissons de vous accueillir à notre événement.<br />
+                Cordialement,<br />
+                L{"'"}Équipe des Jeux Olympiques de Paris 2024</p>
+
         </div>
     );
 };

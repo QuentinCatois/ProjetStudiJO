@@ -65,7 +65,7 @@ const RegisterPage = () => {
         }
 
         if (isSuccess || user) {
-            navigate("/Welcome")
+            navigate("/")
             toast.success("Un message de confirmation d'activation a été envoyé à votre adresse e-mail. Veuillez vérifier votre boîte de réception.")
         }
 

@@ -1,6 +1,6 @@
 import styles from "./HomePage.module.scss"
 import HomePageNavBar from '../components/HomePageNavBar';
-import { Link} from "react-router-dom"
+import Footer from '../components/Footer';
 
 //import images breakpoints
 
@@ -466,12 +466,12 @@ function App () {
           <p>L habilité, la puissance et la grâce feront partie des traits de caractère des athlètes particpant à la natation, le water-polo, la natation synchronisée.</p>
         </div>
 
-        <footer>
-          <Link to= "/register">Contact</Link>
-          <Link to= "/register">Crédits et mentions<br />légales</Link>
-          <Link to= "/register">Conditions générales<br />d achat</Link>
-        </footer>
       </div>
+
+      <div>
+        <Footer />  {/* Render the Footer component */}
+      </div>
+
 
     </>
 

@@ -96,9 +96,21 @@ def send_email_with_qr_code(subject, message, from_email, recipient_list, data):
 
 
 #Set up for sending email
+
+from .models import Payment
+
 @csrf_exempt  # Disable CSRF protection
 def send_email(request):
     if request.method == 'POST':
+
+        # Retrieve the last payment made
+        last_payment = Payment.objects.order_by('-timestamp').first()
+        if not last_payment:
+            return JsonResponse({'success': False, 'error': 'No payment found'}, status=404)
+        
+        # Extract the payment_id
+        payment_id = last_payment.id
+
         subject = 'Confirmation de votre achat de billets pour les Jeux Olympiques de Paris 2024'
         message = ("Cher(e) Maddame, Monsieur, \n" 
                    "Nous vous remercions pour votre achat de tickets pour les Jeux Olympiques de Paris 2024. \n" 
@@ -115,7 +127,7 @@ def send_email(request):
                     "L'Équipe des Jeux Olympiques de Paris 2024")
         from_email = 'from2@example.com'
         recipient_list = ['to2@example.com']
-        data = 'pumukli2'
+        data = payment_id # use the retrieved payment_id of the last payment made from models.py payment
         send_email_with_qr_code(subject, message, from_email, recipient_list, data)
         
         return JsonResponse({'success': True, 'message': 'Email sent successfully'})

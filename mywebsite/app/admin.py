@@ -12,7 +12,7 @@ class ticketsAdmin(admin.ModelAdmin):
     search_fields = ('name', 'ville', 'lieu', 'date', 'heure', 'tickets_prix', 'nombre_total_tickets', 'description', 'slug')
 
 class CartAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'display_cart_items', 'total_price')  # Define which fields to display in the list view
+    list_display = ('id', 'user_id', 'display_cart_items', 'total_price')  # Define which fields to display in the list view
 
     def display_cart_items(self, obj):
         # Method to display cart items as a string in the admin interface
