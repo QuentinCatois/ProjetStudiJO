@@ -200,7 +200,7 @@ def send_email(request):
         print("SENDEMAIL from the magic elfs33")
         
         #send email close it, must uncomment! 
-        #send_email_with_qr_code(subject, message, from_email, recipient_list, data)
+        send_email_with_qr_code(subject, message, from_email, recipient_list, data)
         print(data)
         print("SENDEMAIL from the magic elfs33333")
         #send_email_with_qr_code("subject", "message", "from@email", recipient_list, data)
