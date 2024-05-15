@@ -150,6 +150,12 @@ def stripe_checkout_view(request):
         print(stripe.api_key)
         
         try:
+            
+            data = json.loads(request.body)
+
+            cart_items = data.get('tickets', [])
+            sum = data.get('sum',0) * 100 #it is accepted in cents on stripe side
+
              # Create a product
             product = stripe.Product.create(
                 name="Mon panier",
@@ -159,8 +165,8 @@ def stripe_checkout_view(request):
             # Create a price for the product
             price = stripe.Price.create(
                 product=product.id,
-                unit_amount=2000,  # Price in cents (2000 cents = $20.00)
-                currency='usd',
+                unit_amount=sum,  # Price in cents (2000 cents = $20.00)
+                currency='eur',
             )
 
             successpath  = f'http://{env("DOMAIN")}/success/?priceid={price.id}'

@@ -95,6 +95,7 @@ function Cart() {
             const apiUrl = "http://127.0.0.1:8000/api/create_checkout_session/";
             const cartData = {
                 user: userData,
+                sum:sum,
                 tickets: filteredTickets.map(ticket => ({
                     title: ticket.name,
                     category: ticket.categories_id.categories,
