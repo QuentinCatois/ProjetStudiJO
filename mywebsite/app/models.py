@@ -67,7 +67,7 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f"Cart ID: {self.id}, User ID: {self.user_id}"
+        return f"Cart ID: {self.id}, User ID: {self.user_id}, items: {self.items}"
 
 #Model to save Price id & user after successful Stripe payment   
 class Payment(models.Model):

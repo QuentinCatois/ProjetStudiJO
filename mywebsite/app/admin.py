@@ -19,7 +19,8 @@ class CartAdmin(admin.ModelAdmin):
         items = obj.items
         cart_items_str = ""
         for item in items:
-            cart_items_str += f"{item['title']} - {item['category']} - Price: {item['price']} - Quantity: {item['quantity']}\n"
+            item_id = item.get('id')
+            cart_items_str += f"{item_id} - {item['title']} - {item['category']} - Price: {item['price']} - Quantity: {item['quantity']}\n"
         return cart_items_str
     
     display_cart_items.short_description = 'Cart Items'  # Set the column header for display_cart_items method

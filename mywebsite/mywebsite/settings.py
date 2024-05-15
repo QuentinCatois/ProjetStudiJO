@@ -184,16 +184,26 @@ DJOSER = {
 }
 
 # configuration email, for user activation, password reset, etc. Using Mailtrap.
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_USE_TLS = True
-EMAIL_PORT = env("EMAIL_PORT")
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = "info@jo-de-paris.com"
-DOMAIN = env("DOMAIN")
-SITE_NAME = "Jeux Olympiques France"
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = env("EMAIL_HOST")
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = env("EMAIL_PORT")
+# EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+# EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+# DEFAULT_FROM_EMAIL = "info@jo-de-paris.com"
+# DOMAIN = env("DOMAIN")
+# SITE_NAME = "Jeux Olympiques France"
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "sandbox.smtp.mailtrap.io"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "4fc4e7cd3071f8"
+EMAIL_HOST_PASSWORD = "989d2563975a04"
+DEFAULT_FROM_EMAIL = "info@jo-de-paris.com"
+DOMAIN = "localhost:5173"
+SITE_NAME = "Jeux Olympiques France"
+#mytestemailmytestemail7@gmail.com test2024
 
 STRIPE_PUBLIC_KEY = 'pk_test_51PFI84FTGYMgqNTvUNo9bC0Yrld6GQNJj4di23m26AowkxqUGrmNFFb28GTvNiN3hNcOFMIWEUwsDRkZ7svotCeR00ozFnowQf'
 STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")

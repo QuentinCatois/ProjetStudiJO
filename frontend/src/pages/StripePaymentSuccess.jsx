@@ -52,6 +52,7 @@ const PaymentSuccessfull = () => {
                 const paymentData = {
                 user_id: userData.id,
                 price_id: priceId,
+                cart_id: getQueryParam('cartid')
                 };
 
                 // Send payment request

@@ -15,6 +15,7 @@ function Cart() {
     const isAuthenticated = !!user;
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         console.log(ticketsData);
     }, [ticketsData]);
@@ -38,18 +39,88 @@ function Cart() {
             return;
         }
 
+        /*
+// Fetch user info from Redux store
+dispatch(getUserInfo())
+    .then((response) => {
+        // Handle successful retrieval of user info
+        const userData = response.payload;
+        console.log(userData); // User data retrieved successfully
+        // Cart operation, including sending the user data to the backend
+        const apiUrl = "http://127.0.0.1:8000/api/update_cart/";
+        const cartData = {
+            user: userData,
+            tickets: filteredTickets.map(ticket => ({
+                id: ticket.id,
+                title: ticket.name,
+                category: ticket.categories_id.categories,
+                price: ticket.tickets_prix,
+                quantity: ticket.counter
+            })),
+        };
+
+        try {
+            axios.post(apiUrl, cartData)
+                .then(response => {
+                    console.log('Cart item added:', response.data);
+                    const cartID = response.data.cart_id;
+                    console.log(cartID);
+
+                    // Now, dispatch the second action
+                    const secondApiUrl = "http://127.0.0.1:8000/api/create_checkout_session/";
+                    const secondCartData = {
+                        user: userData,
+                        sum: sum,
+                        cart_id: cartID, // Pass the cart_id to the second dispatch
+                        tickets: filteredTickets.map(ticket => ({
+                            id: ticket.id,
+                            title: ticket.name,
+                            category: ticket.categories_id.categories,
+                            price: ticket.tickets_prix,
+                            quantity: ticket.counter
+                        })),
+                    };
+
+                    try {
+                        axios.post(secondApiUrl, secondCartData)
+                            .then(response => {
+                                console.log('Stripe url data:', response.data);
+                                console.log('Stripe url response.data.stripeurl:', response.data.stripeurl);
+                                window.location.href = response.data.stripeurl;
+                            })
+                            .catch(error => {
+                                console.error('Error creating checkout session:', error);
+                            });
+                    } catch (error) {
+                        console.error('Error creating checkout session:', error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error adding item to cart:', error);
+                });
+        } catch (error) {
+            console.error('Error adding item to cart:', error);
+        }
+    })
+    .catch((error) => {
+        // Handle error if user info retrieval fails
+        console.error('Error retrieving user info:', error);
+    });
+    */
+
         // Fetch user info from Redux store
         dispatch(getUserInfo())
             .then((response) => {
                 // Handle successful retrieval of user info
                 const userData = response.payload;
                 console.log(userData); // User data retrieved successfully
-
                 // Cart operation, including sending the user data to the backend
                 const apiUrl = "http://127.0.0.1:8000/api/update_cart/";
                 const cartData = {
                     user: userData,
+                    sum:sum,
                     tickets: filteredTickets.map(ticket => ({
+                        id: ticket.id,
                         title: ticket.name,
                         category: ticket.categories_id.categories,
                         price: ticket.tickets_prix,
@@ -61,6 +132,14 @@ function Cart() {
                     axios.post(apiUrl, cartData)
                         .then(response => {
                             console.log('Cart item added:', response.data);
+                            
+                            console.log(response.data.cart_id)
+/*                            setCartID(response.data.cart_id)
+                            console.log("cartID")
+                            console.log(cartID)*/
+                            console.log('Stripe url data:', response.data);
+                            console.log('Stripe url response.data.stripeurl:', response.data.stripeurl);
+                            window.location.href = response.data.stripeurl;
                         })
                         .catch(error => {
                             console.error('Error adding item to cart:', error);
@@ -82,7 +161,7 @@ function Cart() {
 
 
 
-
+/*
              // Fetch user info from Redux store
         dispatch(getUserInfo())
         .then((response) => {
@@ -97,6 +176,7 @@ function Cart() {
                 user: userData,
                 sum:sum,
                 tickets: filteredTickets.map(ticket => ({
+                    id: ticket.id,
                     title: ticket.name,
                     category: ticket.categories_id.categories,
                     price: ticket.tickets_prix,
@@ -111,7 +191,7 @@ function Cart() {
                         console.log('Stripe url response.data.stripeurl:', response.data.stripeurl);
                         //redirect("{response.data.stripeurl}");
                         
-                        window.location.href = response.data.stripeurl;
+                        //window.location.href = response.data.stripeurl;
                         //return <Redirect to={response.data.stripeurl}></Redirect>;
                     })
                     .catch(error => {
@@ -124,7 +204,7 @@ function Cart() {
         .catch((error) => {
             // Handle error if user info retrieval fails
             console.error('Error retrieving user info:', error);
-        });
+        });*/
         
     };
 

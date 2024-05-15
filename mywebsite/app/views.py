@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Cart
+from .models import Cart,tickets
 import json
 from django.contrib.auth import get_user_model  # Import the get_user_model function
 import stripe
@@ -13,6 +13,11 @@ from django.core.mail import EmailMessage
 
 # Get the User model
 User = get_user_model()
+
+
+env = environ.Env()
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @csrf_exempt  # Disable CSRF protection
 def update_cart(request):
@@ -29,8 +34,12 @@ def update_cart(request):
             # Create a list to store cart items
             cart_items_list = []
 
+            print("item_data1")
+            print(cart_items)
+            print("item_data2")
             # Process each cart item and add it to the list
             for item_data in cart_items:
+                id = item_data.get('id')
                 title = item_data.get('title')
                 category = item_data.get('category')
                 price = item_data.get('price')
@@ -38,6 +47,7 @@ def update_cart(request):
 
                 # Create a dictionary representing the cart item
                 cart_item = {
+                    'id':id,
                     'title': title,
                     'category': category,
                     'price': price,
@@ -51,7 +61,57 @@ def update_cart(request):
             # Save all cart items to the database as one cart entry, associating it with the user
             cart_item = Cart.objects.create(items=cart_items_list, user=user)
 
-            return JsonResponse({'success': True, 'message': 'Cart updated successfully', 'cart_id': str(cart_item.id)})
+
+
+
+
+
+
+            data = json.loads(request.body)
+            print("data")
+            print(data)
+           
+            cart_items = data.get('tickets', [])
+            sum = data.get('sum',0) * 100 #it is accepted in cents on stripe side
+
+             # Create a product
+            product = stripe.Product.create(
+                name="Mon panier",
+                description="A description for my dynamic cart",
+            )
+
+            # Create a price for the product
+            price = stripe.Price.create(
+                product=product.id,
+                unit_amount=sum,  # Price in cents (2000 cents = $20.00)
+                currency='eur',
+            )
+
+            successpath  = f'http://{env("DOMAIN")}/success/?priceid={price.id}&cartid={str(cart_item.id)}'
+            cancelpath = f'http://{env("DOMAIN")}/cancel/?priceid={price.id}&cartid={str(cart_item.id)}'
+            checkout_session = stripe.checkout.Session.create(
+                line_items=[
+                    {
+                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                        #'price': 'pr_1234',
+                        'price': price.id,
+                        'quantity': 1,
+                    },
+                ],
+                mode='payment',
+                #success_url=YOUR_DOMAIN + 'success=true',
+                #cancel_url=YOUR_DOMAIN + '?canceled=true',
+                success_url= successpath,#success_url
+                cancel_url= cancelpath,#cancel_url
+            )
+
+            print("PPPPPPPPPPPPP")
+            print(checkout_session.url)
+
+            print("PPPPPPPPPPPPP")
+
+
+            return JsonResponse({'success': True, 'message': 'Cart updated successfully', 'cart_id': str(cart_item.id),  'stripeurl': str(checkout_session.url)})
         
         except Exception as e:
             return JsonResponse({'success': False, 'error': str(e)}, status=400)
@@ -79,11 +139,13 @@ def generate_qr_code(data):
 def send_email_with_qr_code(subject, message, from_email, recipient_list, data):
     img = generate_qr_code(data)
     
+    print("SENDEMAIL from the magic elfs11")
     # Save the image to a BytesIO object
     img_io = BytesIO()
     img.save(img_io, format='PNG')
     img_io.seek(0)
     
+    print("SENDEMAIL from the magic elfs12")
     # Create an email with an attachment
     email = EmailMessage(
         subject,
@@ -91,8 +153,12 @@ def send_email_with_qr_code(subject, message, from_email, recipient_list, data):
         from_email,
         recipient_list,
     )
+    print("SENDEMAIL from the magic elfs13")
     email.attach('qrcode.png', img_io.getvalue(), 'image/png')
+    
+    print("SENDEMAIL from the magic elfs11")
     email.send(fail_silently=False)
+    print("SENDEMAIL from the magic elfs14")
 
 
 #Set up for sending email
@@ -101,13 +167,14 @@ from .models import Payment
 
 @csrf_exempt  # Disable CSRF protection
 def send_email(request):
+    print("SENDEMAIL from the magic elfs")
     if request.method == 'POST':
 
         # Retrieve the last payment made
         last_payment = Payment.objects.order_by('-timestamp').first()
         if not last_payment:
             return JsonResponse({'success': False, 'error': 'No payment found'}, status=404)
-        
+        print("SENDEMAIL from the magic elfs2")
         # Extract the payment_id
         payment_id = last_payment.id
 
@@ -127,11 +194,20 @@ def send_email(request):
                     "L'Équipe des Jeux Olympiques de Paris 2024")
         from_email = 'from2@example.com'
         recipient_list = ['to2@example.com']
+        print("SENDEMAIL from the magic elfs3")
         data = payment_id # use the retrieved payment_id of the last payment made from models.py payment
-        send_email_with_qr_code(subject, message, from_email, recipient_list, data)
         
+        print("SENDEMAIL from the magic elfs33")
+        
+        #send email close it, must uncomment! 
+        #send_email_with_qr_code(subject, message, from_email, recipient_list, data)
+        print(data)
+        print("SENDEMAIL from the magic elfs33333")
+        #send_email_with_qr_code("subject", "message", "from@email", recipient_list, data)
+        print("SENDEMAIL from the magic elfs4")
         return JsonResponse({'success': True, 'message': 'Email sent successfully'})
     else:
+        print("SENDEMAIL from the magic elfs5")
         return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
     #return redirect(checkout_session.url, code=303)
         
@@ -152,7 +228,9 @@ def stripe_checkout_view(request):
         try:
             
             data = json.loads(request.body)
-
+            print("data")
+            print(data)
+            cartID = data.get('cart_id', "")
             cart_items = data.get('tickets', [])
             sum = data.get('sum',0) * 100 #it is accepted in cents on stripe side
 
@@ -169,8 +247,8 @@ def stripe_checkout_view(request):
                 currency='eur',
             )
 
-            successpath  = f'http://{env("DOMAIN")}/success/?priceid={price.id}'
-            cancelpath = f'http://{env("DOMAIN")}/cancel/?priceid={price.id}'
+            successpath  = f'http://{env("DOMAIN")}/success/?priceid={price.id}&cartid={cartID}'
+            cancelpath = f'http://{env("DOMAIN")}/cancel/?priceid={price.id}&cartid={cartID}'
             checkout_session = stripe.checkout.Session.create(
                 line_items=[
                     {
@@ -225,6 +303,32 @@ from .models import Payment, UserAccount
 def add_payment(request):
     user_id = request.data.get('user_id')
     price_id = request.data.get('price_id')
+    cart_id = request.data.get('cart_id')
+
+    print("shrek1")
+    cart = Cart.objects.get(id=cart_id)
+    print("cart")
+    print(cart)
+    print("cart.items")
+    print(cart.items)
+    for cartitem in cart.items:
+        print("aaaa")
+        print(cartitem)
+        # data = json.loads(cartitem)
+        # Extract the 'id' field
+        # id_value = data['id']
+        id_value = cartitem['id']
+        quantityField = cartitem['quantity']
+        ticket = tickets.objects.get(id=id_value)
+        print("before")
+        print(ticket.nombre_total_tickets)
+        ticket.nombre_total_tickets = ticket.nombre_total_tickets - quantityField
+        print("after")
+        print(ticket.nombre_total_tickets)
+        ticket.save()
+        #tickets.objects.update(ticket, nombre_total_tickets=ticket.nombre_total_tickets)
+
+
 
     user = get_object_or_404(UserAccount, id=user_id)
 
