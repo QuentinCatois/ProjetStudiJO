@@ -7,6 +7,7 @@ import LegalsMentions from "./pages/LegalsMentions";
 import GeneralCondition from "./pages/GeneralConditionPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import Welcome from './pages/WelcomePage';
 import ActivatePage from "./pages/ActivatePage";
 import ResetPasswordPage from "./pages/ResetPasswordPage"
 import ResetPasswordPageConfirm from "./pages/ResetPasswordPageConfirm";
@@ -52,6 +53,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/activate/:uid/:token" element={<ActivatePage />} />
             <Route path="/signin" element={<LoginPage />} />
+            <Route path="/Welcome" element={<Welcome />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/password/reset/confirm/:uid/:token" element={<ResetPasswordPageConfirm />} />
             <Route path="/billetterie" element={<BilletteriePage><BilletteriePageNavBar /><Footer/></BilletteriePage >}/>

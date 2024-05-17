@@ -65,7 +65,7 @@ const RegisterPage = () => {
         }
 
         if (isSuccess || user) {
-            navigate("/")
+            navigate("/Welcome")
             toast.success("Un message de confirmation d'activation a été envoyé à votre adresse e-mail. Veuillez vérifier votre boîte de réception.")
         }
 
@@ -113,7 +113,7 @@ const RegisterPage = () => {
 
                         <input type="email" className={styles.field} name="email" placeholder="Email" onChange={handleChange} value={email} required/>
 
-                        <input type="password" className={styles.field} id="password" name="password" placeholder="Mot de passe" onChange={handleChange} value={password} required/>
+                        <input type="password" className={styles.field} id="password" name="password" placeholder="Mot de passe (minimum 8 caractères)" onChange={handleChange} value={password} required/>
 
                         <input type="password" className={styles.field} id="confirm-password" name="re_password" placeholder="Confirmation de mot de passe" onChange={handleChange} value={re_password} required/>
                     
@@ -121,7 +121,6 @@ const RegisterPage = () => {
                     
                     </form>
 
-                    <p className={styles.checkbox}> <input type="checkbox" name="checkbox" defaultValue="validated" /> {" "} J{"'"}accepte les conditions d{"'"}utilisation et la politique de confidentialité.</p>
 
                     
 

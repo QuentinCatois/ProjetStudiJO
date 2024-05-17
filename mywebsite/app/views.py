@@ -61,12 +61,6 @@ def update_cart(request):
             # Save all cart items to the database as one cart entry, associating it with the user
             cart_item = Cart.objects.create(items=cart_items_list, user=user)
 
-
-
-
-
-
-
             data = json.loads(request.body)
             print("data")
             print(data)
@@ -105,10 +99,7 @@ def update_cart(request):
                 cancel_url= cancelpath,#cancel_url
             )
 
-            print("PPPPPPPPPPPPP")
             print(checkout_session.url)
-
-            print("PPPPPPPPPPPPP")
 
 
             return JsonResponse({'success': True, 'message': 'Cart updated successfully', 'cart_id': str(cart_item.id),  'stripeurl': str(checkout_session.url)})
@@ -139,13 +130,13 @@ def generate_qr_code(data):
 def send_email_with_qr_code(subject, message, from_email, recipient_list, data):
     img = generate_qr_code(data)
     
-    print("SENDEMAIL from the magic elfs11")
+    print("SENDEMAIL 1")
     # Save the image to a BytesIO object
     img_io = BytesIO()
     img.save(img_io, format='PNG')
     img_io.seek(0)
     
-    print("SENDEMAIL from the magic elfs12")
+    print("SENDEMAIL 2")
     # Create an email with an attachment
     email = EmailMessage(
         subject,
@@ -153,12 +144,12 @@ def send_email_with_qr_code(subject, message, from_email, recipient_list, data):
         from_email,
         recipient_list,
     )
-    print("SENDEMAIL from the magic elfs13")
+    print("SENDEMAIL 3")
     email.attach('qrcode.png', img_io.getvalue(), 'image/png')
     
-    print("SENDEMAIL from the magic elfs11")
+    print("SENDEMAIL 4")
     email.send(fail_silently=False)
-    print("SENDEMAIL from the magic elfs14")
+    print("SENDEMAIL 5")
 
 
 #Set up for sending email
@@ -167,14 +158,14 @@ from .models import Payment
 
 @csrf_exempt  # Disable CSRF protection
 def send_email(request):
-    print("SENDEMAIL from the magic elfs")
+    print("SENDEMAIL 6")
     if request.method == 'POST':
 
         # Retrieve the last payment made
         last_payment = Payment.objects.order_by('-timestamp').first()
         if not last_payment:
             return JsonResponse({'success': False, 'error': 'No payment found'}, status=404)
-        print("SENDEMAIL from the magic elfs2")
+        print("SENDEMAIL 7")
         # Extract the payment_id
         payment_id = last_payment.id
 
@@ -194,20 +185,20 @@ def send_email(request):
                     "L'Équipe des Jeux Olympiques de Paris 2024")
         from_email = 'from2@example.com'
         recipient_list = ['to2@example.com']
-        print("SENDEMAIL from the magic elfs3")
+        print("SENDEMAIL 8")
         data = payment_id # use the retrieved payment_id of the last payment made from models.py payment
         
-        print("SENDEMAIL from the magic elfs33")
+        print("SENDEMAIL 9")
         
         #send email close it, must uncomment! 
         send_email_with_qr_code(subject, message, from_email, recipient_list, data)
         print(data)
-        print("SENDEMAIL from the magic elfs33333")
+        print("SENDEMAIL 10")
         #send_email_with_qr_code("subject", "message", "from@email", recipient_list, data)
-        print("SENDEMAIL from the magic elfs4")
+        print("SENDEMAIL 11")
         return JsonResponse({'success': True, 'message': 'Email sent successfully'})
     else:
-        print("SENDEMAIL from the magic elfs5")
+        print("SENDEMAIL 12")
         return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
     #return redirect(checkout_session.url, code=303)
         
@@ -312,11 +303,7 @@ def add_payment(request):
     print("cart.items")
     print(cart.items)
     for cartitem in cart.items:
-        print("aaaa")
         print(cartitem)
-        # data = json.loads(cartitem)
-        # Extract the 'id' field
-        # id_value = data['id']
         id_value = cartitem['id']
         quantityField = cartitem['quantity']
         ticket = tickets.objects.get(id=id_value)
