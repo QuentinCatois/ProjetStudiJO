@@ -31,12 +31,14 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "http://localhost:5173",
     "https://checkout.stripe.com",
+    "http://172.31.43.212:5173",
+    "http://51.20.5.75:5173"
 ]
 
 # Application definition
@@ -201,7 +203,7 @@ EMAIL_PORT = 2525
 EMAIL_HOST_USER = "4fc4e7cd3071f8"
 EMAIL_HOST_PASSWORD = "989d2563975a04"
 DEFAULT_FROM_EMAIL = "info@jo-de-paris.com"
-DOMAIN = "localhost:5173"
+DOMAIN = "51.20.5.75:5173"
 SITE_NAME = "Jeux Olympiques France"
 #mytestemailmytestemail7@gmail.com test2024
 

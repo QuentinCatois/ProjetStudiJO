@@ -25,9 +25,8 @@ class UserAccountManager(BaseUserManager):
             raise ValueError("Une adresse email est nécessaire")        
 
         user = self.model(first_name=first_name, last_name=last_name, email=email)
-
         user.set_password(password)
-
+        user.is_active = True
         user.save()
 
         return user

@@ -46,7 +46,7 @@ function Cart() {
                 const userData = response.payload;
                 console.log(userData); // User data retrieved successfully
                 // Cart operation, including sending the user data to the backend
-                const apiUrl = "http://127.0.0.1:8000/api/update_cart/";
+                const apiUrl = "http://51.20.5.75:8000/api/update_cart/";
                 const cartData = {
                     user: userData,
                     sum:sum,

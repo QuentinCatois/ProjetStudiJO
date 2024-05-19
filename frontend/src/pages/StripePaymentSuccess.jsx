@@ -31,7 +31,7 @@ const PaymentSuccessfull = () => {
                 console.log(userData);
 
                 //API URL to send email
-                const apiUrl = "http://127.0.0.1:8000/api/send_email/";
+                const apiUrl = "http://51.20.5.75:8000/api/send_email/";
 
                 const cartData = {
                     user: userData,
@@ -48,7 +48,7 @@ const PaymentSuccessfull = () => {
                 });
 
                 // API URL to save payment
-                const paymentApiUrl = "http://127.0.0.1:8000/api/add_payment/";
+                const paymentApiUrl = "http://51.20.5.75:8000/api/add_payment/";
                 const paymentData = {
                 user_id: userData.id,
                 price_id: priceId,

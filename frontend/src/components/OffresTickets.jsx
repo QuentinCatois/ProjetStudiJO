@@ -15,7 +15,7 @@ function Tickets() {
             console.log(ticketsData)
             if (ticketsData.length === 0) {
             try {
-                const endpoint = `http://127.0.0.1:8000/api/tickets/tickets/`;
+                const endpoint = `http://51.20.5.75:8000/api/tickets/tickets/`;
                 const response = await axios.get(endpoint);
                 const { data } = response;
     

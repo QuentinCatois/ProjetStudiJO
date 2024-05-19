@@ -209,7 +209,7 @@ env = environ.Env()
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-YOUR_DOMAIN = 'http://localhost:5173/'
+YOUR_DOMAIN = 'http://51.20.5.75:5173/'
 @csrf_exempt  # Disable CSRF protection
 def stripe_checkout_view(request):
     if request.method == 'POST':

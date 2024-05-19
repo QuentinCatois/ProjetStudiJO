@@ -2,7 +2,7 @@
 
 import axios from "axios"
 
-const BACKEND_DOMAIN = "http://localhost:8000"
+const BACKEND_DOMAIN = "http://51.20.5.75:8000"
 
 /*we find below all the path that we have been creating, using during Postmand testing*/
 const REGISTER_URL = `${BACKEND_DOMAIN}/api/auth/users/`
